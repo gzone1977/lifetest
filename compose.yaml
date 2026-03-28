@@ -1,0 +1,9 @@
+services:
+  web-factory:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    restart: unless-stopped
