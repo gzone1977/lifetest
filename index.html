@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life Test - 모든 콘텐츠</title>
     <meta name="description" content="MZ세대를 위한 재미있는 심리 테스트, 운세, MBTI 콘텐츠 모음">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- JSON-LD 구조화 데이터 삽입 예정 -->
 </head>
 <body>
@@ -46,7 +46,7 @@
         </footer>
     </div>
 
-    <script src="/js/script.js"></script>
+    <script src="js/script.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
             const contentGrid = document.getElementById("all-contents-grid");
@@ -65,7 +65,7 @@
             contents.forEach(content => {
                 // 메인 콘텐츠 그리드에 추가
                 const contentCard = document.createElement("a");
-                contentCard.href = `/${content.path}/index.html`;
+                contentCard.href = `./${content.path}/index.html`;
                 contentCard.className = "content-card";
                 contentCard.innerHTML = `
                     <div class="content-card-thumbnail" style="background: #e0e0e0; height: 150px; display: flex; align-items: center; justify-content: center;">${content.title} 썸네일</div>
@@ -77,7 +77,7 @@
                 // 네비게이션 목록에 추가
                 const listItem = document.createElement("li");
                 const link = document.createElement("a");
-                link.href = `/${content.path}/index.html`;
+                link.href = `./${content.path}/index.html`;
                 link.textContent = content.title;
                 listItem.appendChild(link);
                 contentListNav.appendChild(listItem);
