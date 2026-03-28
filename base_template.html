@@ -35,35 +35,47 @@
                 </aside>
 
                 <article class="content-area">
-                    <h1 class="content-title">콘텐츠 타이틀</h1>
-                    <p class="content-description">2~3줄의 매력적인 후킹 멘트 및 썸네일 이미지 영역</p>
-                    <div class="thumbnail-image">
-                        썸네일 이미지
+                    <div id="quiz-section">
+                        <h1 class="content-title">콘텐츠 타이틀</h1>
+                        <p class="content-description">2~3줄의 매력적인 후킹 멘트 및 썸네일 이미지 영역</p>
+                        <div class="thumbnail-image-wrapper">
+                            <img src="https://via.placeholder.com/600x400?text=Test+Thumbnail" alt="콘텐츠 썸네일">
+                        </div>
+
+                        <div class="ad-banner body-ad-01">
+                            <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="3362761246" -->
+                            <div class="ad-placeholder">광고: 본문 상단</div>
+                        </div>
+
+                        <div class="input-form">
+                            <p>사용자 입력 필드</p>
+                            <input type="text" placeholder="입력하세요">
+                            <button class="cta-button">결과 보기</button>
+                        </div>
+
+                        <div class="ad-banner body-ad-02">
+                            <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="2049679574" -->
+                            <div class="ad-placeholder">광고: 본문 하단</div>
+                        </div>
                     </div>
 
-                    <div class="ad-banner body-ad-01">
-                        <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="3362761246" -->
-                        <div class="ad-placeholder">광고: 본문 상단</div>
-                    </div>
-
-                    <div class="input-form">
-                        <p>사용자 입력 필드</p>
-                        <input type="text" placeholder="입력하세요">
-                        <button class="cta-button">결과 보기</button>
-                    </div>
-
-                    <div class="ad-banner body-ad-02">
-                        <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="2049679574" -->
-                        <div class="ad-placeholder">광고: 본문 하단</div>
-                    </div>
-
-                    <div class="explore-banner">
-                        <h3>다른 재미있는 테스트도 해보세요!</h3>
-                        <div class="explore-item">
-                            <div class="explore-thumbnail"></div>
-                            <div class="explore-text">
-                                <p class="explore-title">다른 콘텐츠 타이틀</p>
-                                <p class="explore-hook">클릭 유도 후킹 멘트</p>
+                    <!-- 결과 화면 (초기에는 숨김) -->
+                    <div id="result-section" style="display: none;">
+                        <h2>당신의 결과는?!</h2>
+                        <div class="result-image-wrapper">
+                            <img src="https://via.placeholder.com/300x300?text=Result+Image" alt="결과 이미지">
+                        </div>
+                        <p class="result-description">이곳에 테스트 결과에 대한 상세 설명이 들어갑니다.</p>
+                        <p class="result-type">어울리는 유형: OOO</p>
+                        <!-- 탐험 유도 배너 -->
+                        <div class="explore-banner">
+                            <h3>다른 재미있는 테스트도 해보세요!</h3>
+                            <div class="explore-item">
+                                <div class="explore-thumbnail"><img src="https://via.placeholder.com/60x60?text=Thumb" alt="다른 콘텐츠 썸네일"></div>
+                                <div class="explore-text">
+                                    <p class="explore-title">다른 콘텐츠 타이틀</p>
+                                    <p class="explore-hook">클릭 유도 후킹 멘트</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,8 +96,16 @@
         <!-- 푸터 -->
         <footer class="footer">
             <p>&copy; 2026 Life Test. All rights reserved.</p>
-
         </footer>
+    </div>
+
+    <!-- 로딩 오버레이 -->
+    <div class="loading-overlay">
+        <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
 
     <script src="../js/script.js"></script>

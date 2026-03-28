@@ -52,35 +52,28 @@
             const contentGrid = document.getElementById("all-contents-grid");
             const contentListNav = document.getElementById("content-list");
 
-            // Agent가 /workspace 내 폴더 목록을 읽어와서 이 스크립트를 동적으로 생성합니다.
-            // 현재는 더미 데이터로 대체합니다.
             const contents = [
-                { title: "나와 찰떡궁합인 간식은?", path: "snack-mbti-test" },
-                { title: "전생에 나는 어떤 동물이었을까?", path: "animal-reincarnation-test" },
-                { title: "스트레스 해소법으로 알아보는 나의 성향", path: "stress-coping-test" },
-                { title: "여행 스타일로 알아보는 나의 진짜 성격", path: "travel-mbti-test" },
-                { title: "무인도에 떨어졌을 때 나의 생존 전략", path: "island-survival-test" }
+                { title: "나와 찰떡궁합인 간식은?", path: "snack-mbti-test", thumbnail: "https://via.placeholder.com/400x300?text=Snack" },
+                { title: "전생에 나는 어떤 동물이었을까?", path: "animal-reincarnation-test", thumbnail: "https://via.placeholder.com/400x300?text=Animal" },
+                { title: "스트레스 해소법으로 알아보는 나의 성향", path: "stress-coping-test", thumbnail: "https://via.placeholder.com/400x300?text=Stress" },
+                { title: "여행 스타일로 알아보는 나의 진짜 성격", path: "travel-mbti-test", thumbnail: "https://via.placeholder.com/400x300?text=Travel" },
+                { title: "무인도에 떨어졌을 때 나의 생존 전략", path: "island-survival-test", thumbnail: "https://via.placeholder.com/400x300?text=Island" }
             ];
 
             contents.forEach(content => {
                 // 메인 콘텐츠 그리드에 추가
-                const contentCard = document.createElement("a");
-                contentCard.href = `./${content.path}/index.html`;
-                contentCard.className = "content-card";
-                contentCard.innerHTML = `
-                    <div class="content-card-thumbnail" style="background: #e0e0e0; height: 150px; display: flex; align-items: center; justify-content: center;">${content.title} 썸네일</div>
-                    <h3 class="content-card-title">${content.title}</h3>
-                    <p class="content-card-description">나의 ${content.title}을(를) 지금 바로 알아보세요!</p>
+                contentGrid.innerHTML += `
+                    <a href="./${content.path}/index.html" class="content-card">
+                        <div class="content-card-thumbnail">
+                            <img src="${content.thumbnail}" alt="${content.title} 썸네일">
+                        </div>
+                        <h3 class="content-card-title">${content.title}</h3>
+                        <p class="content-card-description">나의 ${content.title}을(를) 지금 바로 알아보세요!</p>
+                    </a>
                 `;
-                contentGrid.appendChild(contentCard);
 
                 // 네비게이션 목록에 추가
-                const listItem = document.createElement("li");
-                const link = document.createElement("a");
-                link.href = `./${content.path}/index.html`;
-                link.textContent = content.title;
-                listItem.appendChild(link);
-                contentListNav.appendChild(listItem);
+                contentListNav.innerHTML += `<li><a href="./${content.path}/index.html">${content.title}</a></li>`;
             });
         });
     </script>
