@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Test - 모든 콘텐츠</title>
+    <meta name="description" content="MZ세대를 위한 재미있는 심리 테스트, 운세, MBTI 콘텐츠 모음">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- JSON-LD 구조화 데이터 삽입 예정 -->
+</head>
+<body>
+    <div class="container">
+        <!-- 상단 헤더 -->
+        <header class="header">
+            <div class="logo">Life Test</div>
+            <div class="hamburger-menu">☰</div>
+            <nav class="full-screen-nav">
+                <div class="close-button">X</div>
+                <ul id="content-list">
+                    <!-- 콘텐츠 목록이 여기에 동적으로 로드됩니다 -->
+                </ul>
+            </nav>
+        </header>
+
+        <div class="ad-banner top-width-ad">
+            <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="6534485962" -->
+            <div class="ad-placeholder">광고: 상단 가로형 배너</div>
+        </div>
+
+        <main class="main-content">
+            <h1 class="content-title">모든 Life Test 콘텐츠</h1>
+            <p class="content-description">재미있는 심리 테스트와 운세 콘텐츠를 모두 만나보세요!</p>
+            <div id="all-contents-grid" class="content-grid">
+                <!-- 모든 콘텐츠가 여기에 동적으로 로드됩니다 -->
+            </div>
+        </main>
+
+        <div class="ad-banner bottom-width-ad">
+            <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="9736597908" -->
+            <div class="ad-placeholder">광고: 하단 가로형 배너</div>
+        </div>
+
+        <!-- 푸터 -->
+        <footer class="footer">
+            <p>&copy; 2026 Life Test. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const contentGrid = document.getElementById("all-contents-grid");
+            const contentListNav = document.getElementById("content-list");
+
+            // Agent가 /workspace 내 폴더 목록을 읽어와서 이 스크립트를 동적으로 생성합니다.
+            // 현재는 더미 데이터로 대체합니다.
+            const contents = [
+                { title: "나와 찰떡궁합인 간식은?", path: "snack-mbti-test" },
+                { title: "전생에 나는 어떤 동물이었을까?", path: "animal-reincarnation-test" },
+                { title: "스트레스 해소법으로 알아보는 나의 성향", path: "stress-coping-test" },
+                { title: "여행 스타일로 알아보는 나의 진짜 성격", path: "travel-mbti-test" },
+                { title: "무인도에 떨어졌을 때 나의 생존 전략", path: "island-survival-test" }
+            ];
+
+            contents.forEach(content => {
+                // 메인 콘텐츠 그리드에 추가
+                const contentCard = document.createElement("a");
+                contentCard.href = `/${content.path}/index.html`;
+                contentCard.className = "content-card";
+                contentCard.innerHTML = `
+                    <div class="content-card-thumbnail" style="background: #e0e0e0; height: 150px; display: flex; align-items: center; justify-content: center;">${content.title} 썸네일</div>
+                    <h3 class="content-card-title">${content.title}</h3>
+                    <p class="content-card-description">나의 ${content.title}을(를) 지금 바로 알아보세요!</p>
+                `;
+                contentGrid.appendChild(contentCard);
+
+                // 네비게이션 목록에 추가
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.href = `/${content.path}/index.html`;
+                link.textContent = content.title;
+                listItem.appendChild(link);
+                contentListNav.appendChild(listItem);
+            });
+        });
+    </script>
+</body>
+</html>
