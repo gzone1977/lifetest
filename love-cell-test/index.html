@@ -11,6 +11,7 @@
     <div class="container">
         <!-- 상단 헤더 -->
         <header class="header">
+            <a href="/" class="home-icon">🏠</a> <!-- Home 이모티콘 -->
             <div class="logo">Life Test</div>
             <div class="hamburger-menu">☰</div>
             <nav class="full-screen-nav">
@@ -117,10 +118,10 @@
     <script src="../js/script.js"></script>
     <script>
         const quizData = [
-            { question: "1. 로맨스 드라마나 영화를 볼 때 감흥이 없다.", type: "score" },
-            { question: "2. 매주 주말 혼자 보내는 시간이 가장 편하고 즐겁다.", type: "score" },
-            { question: "3. 누군가 나에게 호감을 보여도 귀찮게 느껴진다.", type: "score" },
-            { question: "4. 데이트 준비를 하는 상상만 해도 피곤하다.", type: "score" },
+            { question: "1. 로맨스 드라마나 영화를 볼 때 감흥이 없다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "2. 매주 주말 혼자 보내는 시간이 가장 편하고 즐겁다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "3. 누군가 나에게 호감을 보여도 귀찮게 느껴진다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "4. 데이트 준비를 하는 상상만 해도 피곤하다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
             { question: "5. 다른 사람들의 연애 이야기를 들어도 부럽지 않다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
             { question: "6. 소개팅에서 애프터 신청이 들어와도 선뜻 나서기가 어렵다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
             { question: "7. 길을 가다 손잡고 가는 커플을 보면 아무런 감흥이 없다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
@@ -154,40 +155,59 @@
 
             optionsContainer.addEventListener("click", (e) => {
                 if(e.target.classList.contains("option-button")) {
+                    // 이전에 선택된 버튼의 'selected' 클래스 제거
+                    const prevSelected = optionsContainer.querySelector(".option-button.selected");
+                    if (prevSelected) {
+                        prevSelected.classList.remove("selected");
+                    }
+                    // 현재 클릭된 버튼에 'selected' 클래스 추가
+                    e.target.classList.add("selected");
+
                     const score = parseInt(e.target.dataset.score, 10);
                     totalScore += score;
                     currentQuestionIndex++;
                     
+                    // setTimeout 제거 및 즉시 로드
                     if (currentQuestionIndex < quizData.length) {
                         loadQuestion();
                     } else {
-                        // 모든 질문이 완료되면 결과 보기 버튼을 활성화하거나 바로 결과 페이지로 이동 (현재는 버튼 클릭 대기)
+                        showResult();
                     }
                 }
             });
 
             ctaButton.addEventListener("click", () => {
-                 let finalResult = results[results.length - 1];
-                 for (let r of results) {
-                     if (totalScore <= r.maxScore) {
-                         finalResult = r;
-                         break;
-                     }
-                 }
-                 
-                 document.querySelector(".result-description").textContent = finalResult.desc;
-                 document.querySelector(".result-type").textContent = `결과: ${finalResult.title}`;
-                 
-                 document.getElementById("quiz-section").style.display = "none";
-                 const loadingOverlay = document.querySelector(".loading-overlay");
-                 const resultSection = document.getElementById("result-section");
-                 
-                 loadingOverlay.classList.add("show");
-                 setTimeout(() => {
+                // 모든 질문에 답변했는지 확인
+                // 현재 질문이 남아있으면 alert, 아니면 결과 보기
+                if (currentQuestionIndex < quizData.length) {
+                    alert("모든 질문에 답변해주세요!");
+                } else {
+                    showResult();
+                }
+            });
+
+            function showResult() {
+                let finalResult = results[results.length - 1]; // 기본값은 마지막 결과
+                for (let r of results) {
+                    if (totalScore <= r.maxScore) {
+                        finalResult = r;
+                        break;
+                    }
+                }
+                
+                document.querySelector(".result-description").textContent = finalResult.desc;
+                document.querySelector(".result-type").textContent = `결과: ${finalResult.title}`;
+                
+                document.getElementById("quiz-section").style.display = "none";
+                const loadingOverlay = document.querySelector(".loading-overlay");
+                const resultSection = document.getElementById("result-section");
+                
+                loadingOverlay.classList.add("show");
+                setTimeout(() => {
                     loadingOverlay.classList.remove("show");
                     resultSection.style.display = "block";
-                 }, 2000);
-            });
+                }, 2000);
+            }
 
             loadQuestion(); // 페이지 로드 시 첫 질문 로드
         });
