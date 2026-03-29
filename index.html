@@ -3,81 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Test - 모든 콘텐츠</title>
-    <meta name="description" content="MZ세대를 위한 재미있는 심리 테스트, 운세, MBTI 콘텐츠 모음">
+    <title>Life Test - 다양한 심리/성향 테스트 모음</title>
+    <meta name="description" content="MBTI, 연애, 심리 등 나를 알아보는 재미있는 테스트 모음집. 매일 새로운 테스트가 업데이트됩니다!">
     <link rel="stylesheet" href="css/style.css">
-    <!-- JSON-LD 구조화 데이터 삽입 예정 -->
 </head>
 <body>
-    <div class="container">
-        <!-- 상단 헤더 -->
+    <div class="container" style="max-width: 1000px; border-radius: 0;">
         <header class="header">
             <div class="logo">Life Test</div>
             <div class="hamburger-menu">☰</div>
             <nav class="full-screen-nav">
                 <div class="close-button">X</div>
-                <ul id="content-list">
-                    <!-- 콘텐츠 목록이 여기에 동적으로 로드됩니다 -->
-                </ul>
+                <ul id="content-list"></ul>
             </nav>
         </header>
 
-        <!--
-        <div class="ad-banner top-width-ad">
-            <div class="ad-placeholder">광고: 상단 가로형 배너</div>
-        </div>
-        -->
-
         <main class="main-content">
-            <h1 class="content-title">모든 Life Test 콘텐츠</h1>
-            <p class="content-description">재미있는 심리 테스트와 운세 콘텐츠를 모두 만나보세요!</p>
-            <div id="all-contents-grid" class="content-grid">
-                <!-- 모든 콘텐츠가 여기에 동적으로 로드됩니다 -->
+            <h1 class="content-title" style="margin-top: 1rem;">🔥 인기 테스트 모음</h1>
+            <p class="content-description">나를 알아보는 가장 쉽고 재미있는 방법! 지금 바로 시작해보세요.</p>
+            
+            <div class="content-grid">
+                <!-- 콘텐츠 1 -->
+                <a href="love-cell-test/index.html" class="content-card">
+                    <div class="content-card-thumbnail">
+                        <span>💗 Love Test</span>
+                    </div>
+                    <h2 class="content-card-title">연애 세포 생존 테스트</h2>
+                    <p class="content-card-description">내 안의 연애 세포는 아직 살아있을까?</p>
+                </a>
+                
+                <!-- 콘텐츠 2 -->
+                <a href="past-life-job-test/index.html" class="content-card">
+                    <div class="content-card-thumbnail">
+                        <span>📜 Past Life</span>
+                    </div>
+                    <h2 class="content-card-title">전생 직업 테스트</h2>
+                    <p class="content-card-description">나의 전생은 어떤 모습이었을까?</p>
+                </a>
+                
+                <!-- 콘텐츠 3 -->
+                <a href="anger-management-test/index.html" class="content-card">
+                    <div class="content-card-thumbnail">
+                        <span>🌋 Anger Test</span>
+                    </div>
+                    <h2 class="content-card-title">분노조절장애 테스트</h2>
+                    <p class="content-card-description">사소한 일에도 욱하는 당신?</p>
+                </a>
+                
+                <!-- 콘텐츠 4 -->
+                <a href="island-survival-test/index.html" class="content-card">
+                    <div class="content-card-thumbnail">
+                        <span>🏝️ Survival</span>
+                    </div>
+                    <h2 class="content-card-title">무인도 생존 테스트</h2>
+                    <p class="content-card-description">갑자기 무인도에 떨어졌다! 과연 나는 며칠이나 버틸 수 있을까?</p>
+                </a>
+                
+                <!-- 콘텐츠 5 -->
+                <a href="animal-reincarnation-test/index.html" class="content-card">
+                    <div class="content-card-thumbnail">
+                        <span>🐾 Reincarnation</span>
+                    </div>
+                    <h2 class="content-card-title">동물 환생 테스트</h2>
+                    <p class="content-card-description">내가 다시 태어난다면 어떤 동물일까?</p>
+                </a>
+
+                <!-- 콘텐츠 6 -->
+                <a href="stress-coping-test/index.html" class="content-card">
+                    <div class="content-card-thumbnail">
+                        <span>🌪️ Stress Test</span>
+                    </div>
+                    <h2 class="content-card-title">스트레스 대처 유형 테스트</h2>
+                    <p class="content-card-description">극심한 스트레스 상황에서 당신의 무의식적인 대처 방법은?</p>
+                </a>
+                
+                <!-- 기존 콘텐츠 유지 -->
+                <a href="snack-mbti-test/index.html" class="content-card">
+                    <div class="content-card-thumbnail">
+                        <span>🍿 Snack MBTI</span>
+                    </div>
+                    <h2 class="content-card-title">나와 어울리는 과자 테스트</h2>
+                    <p class="content-card-description">내 성격과 찰떡인 과자는 무엇일까?</p>
+                </a>
+                
+                <a href="travel-mbti-test/index.html" class="content-card">
+                    <div class="content-card-thumbnail">
+                        <span>✈️ Travel MBTI</span>
+                    </div>
+                    <h2 class="content-card-title">여행 스타일 MBTI 테스트</h2>
+                    <p class="content-card-description">나의 여행 성향에 맞는 최고의 여행지는?</p>
+                </a>
             </div>
         </main>
 
-        <!--
-        <div class="ad-banner bottom-width-ad">
-            <div class="ad-placeholder">광고: 하단 가로형 배너</div>
-        </div>
-        -->
-
-        <!-- 푸터 -->
         <footer class="footer">
             <p>&copy; 2026 Life Test. All rights reserved.</p>
         </footer>
     </div>
-
     <script src="js/script.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", async () => {
-            const contentGrid = document.getElementById("all-contents-grid");
-            const contentListNav = document.getElementById("content-list");
-
-            const contents = [
-                { title: "나와 찰떡궁합인 간식은?", path: "snack-mbti-test", thumbnail: "https://via.placeholder.com/400x300?text=Snack" },
-                { title: "전생에 나는 어떤 동물이었을까?", path: "animal-reincarnation-test", thumbnail: "https://via.placeholder.com/400x300?text=Animal" },
-                { title: "스트레스 해소법으로 알아보는 나의 성향", path: "stress-coping-test", thumbnail: "https://via.placeholder.com/400x300?text=Stress" },
-                { title: "여행 스타일로 알아보는 나의 진짜 성격", path: "travel-mbti-test", thumbnail: "https://via.placeholder.com/400x300?text=Travel" },
-                { title: "무인도에 떨어졌을 때 나의 생존 전략", path: "island-survival-test", thumbnail: "https://via.placeholder.com/400x300?text=Island" }
-            ];
-
-            contents.forEach(content => {
-                // 메인 콘텐츠 그리드에 추가
-                contentGrid.innerHTML += `
-                    <a href="./${content.path}/index.html" class="content-card">
-                        <div class="content-card-thumbnail">
-                            <img src="${content.thumbnail}" alt="${content.title} 썸네일">
-                        </div>
-                        <h3 class="content-card-title">${content.title}</h3>
-                        <p class="content-card-description">나의 ${content.title}을(를) 지금 바로 알아보세요!</p>
-                    </a>
-                `;
-
-                // 네비게이션 목록에 추가
-                contentListNav.innerHTML += `<li><a href="./${content.path}/index.html">${content.title}</a></li>`;
-            });
-        });
-    </script>
 </body>
 </html>

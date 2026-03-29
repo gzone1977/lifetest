@@ -2,14 +2,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Dokdo&display=swap");
 
 :root {
-    --primary-color: #A2B9EE; /* 연한 파스텔 블루 */
-    --secondary-color: #B2DFFB; /* 더 연한 파스텔 스카이 블루 */
-    --accent-color: #FFC0CB; /* 연한 파스텔 핑크 */
-    --text-color: #333; /* 진한 회색 */
-    --light-bg: #F0F4F8; /* 아주 연한 배경색 */
-    --card-bg: #FFFFFF; /* 카드 배경색 */
-    --border-color: #DDEBF7; /* 연한 테두리색 */
-    --shadow-light: rgba(162, 185, 238, 0.2); /* 연한 그림자 */
+    --primary-color: #009CED; /* Primary blue from image */
+    --secondary-color: #222222; /* Secondary dark gray from image */
+    --tertiary-color: #00A3C2; /* Tertiary blue from image */
+    --neutral-color: #F2F2F2; /* Neutral light gray from image */
+    --text-color: #333333; /* Darker gray for text */
+    --light-text-color: #666666; /* Lighter gray for secondary text */
+    --card-bg: #FFFFFF; /* Card background color */
+    --body-bg: #F2F2F2; /* Body background color from neutral */
+    --border-color: #E0E0E0; /* Lighter border color */
+    --shadow-light: rgba(0, 0, 0, 0.08); /* Subtle shadow for cards */
+    --shadow-medium: rgba(0, 0, 0, 0.15); /* Medium shadow for interactive elements */
 }
 
 * {
@@ -22,7 +25,7 @@ body {
     font-family: 'Gowun Batang', serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--light-bg);
+    background-color: var(--body-bg);
     display: flex;
     justify-content: center;
     align-items: flex-start; /* 상단 정렬 */
@@ -32,11 +35,14 @@ body {
 .container {
     width: 100%;
     max-width: 800px; /* TestMoa와 유사한 최대 너비 */
-    margin: 1rem auto; /* 상하 여백 추가 */
+    margin: 0;
     background-color: var(--card-bg);
-    border-radius: 20px; /* 둥근 모서리 강조 */
-    box-shadow: 0 8px 20px var(--shadow-light);
+    border-radius: 0;
+    box-shadow: 0 0.5rem 1.5rem var(--shadow-light); /* 부드러운 그림자 */
     overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header */
@@ -50,16 +56,16 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 2px solid var(--secondary-color);
-    border-radius: 20px 20px 0 0; /* 상단만 둥글게 */
+    border-radius: 0;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1); /* 미묘한 그림자 */
 }
 
 .header .logo {
-    font-family: 'Dokdo', cursive; /* 귀여운 폰트 적용 */
-    font-size: 2.5rem;
-    font-weight: normal;
+    font-family: 'Gowun Batang', serif; /* 세련된 폰트 적용 */
+    font-size: 2.2rem;
+    font-weight: bold;
     color: #fff;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    text-shadow: none;
 }
 
 .hamburger-menu {
@@ -95,7 +101,7 @@ body {
     right: 1.5rem;
     font-size: 2.5rem;
     cursor: pointer;
-    color: var(--accent-color);
+    color: var(--tertiary-color);
 }
 
 .full-screen-nav #content-list {
@@ -115,7 +121,7 @@ body {
 }
 
 .full-screen-nav #content-list a:hover {
-    color: var(--accent-color);
+    color: var(--tertiary-color);
 }
 
 /* Ad Banners - Temporary Styles */
@@ -126,12 +132,12 @@ body {
     font-weight: bold;
     color: var(--text-color);
     border: 1px dashed var(--border-color);
-    border-radius: 10px; /* 둥근 모서리 */
+    border-radius: 0.75rem; /* 둥근 모서리 (12px) */
     overflow: hidden; /* 내부 이미지 등에 영향 */
 }
 
-.ad-placeholder { background: var(--light-bg); min-height: 100px; display: flex; align-items: center; justify-content: center; width: calc(100% - 2rem); margin: 1rem auto; }
-.ad-placeholder-vertical { background: var(--light-bg); min-width: 120px; min-height: 300px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-lr; text-orientation: mixed; border-radius: 10px; }
+.ad-placeholder { background: var(--neutral-color); min-height: 100px; display: flex; align-items: center; justify-content: center; width: calc(100% - 2rem); margin: 1rem auto; border-radius: 0.75rem; }
+.ad-placeholder-vertical { background: var(--neutral-color); min-width: 120px; min-height: 300px; display: flex; align-items: center; justify-content: center; writing-mode: vertical-lr; text-orientation: mixed; border-radius: 0.75rem; }
 
 /* Main Content */
 .main-content {
@@ -150,21 +156,22 @@ body {
     flex-grow: 1;
     background-color: var(--card-bg);
     padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px var(--shadow-light);
+    border-radius: 1.5rem; /* 24px */
+    box-shadow: none;
 }
 
 .content-title {
-    font-family: 'Dokdo', cursive;
-    font-size: 2.5rem;
-    color: var(--primary-color);
+    font-family: 'Gowun Batang', serif;
+    font-size: 2rem;
+    color: var(--secondary-color);
     margin-bottom: 0.8rem;
     text-align: center;
+    font-weight: bold;
 }
 
 .content-description {
     font-size: 1.1rem;
-    color: var(--dark-gray);
+    color: var(--light-text-color);
     margin-bottom: 1.5rem;
     text-align: center;
 }
@@ -174,9 +181,9 @@ body {
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     position: relative;
     margin-bottom: 1.5rem;
-    border-radius: 10px;
+    border-radius: 1.2rem; /* 둥근 모서리 */
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.1);
 }
 
 .thumbnail-image-wrapper img {
@@ -186,7 +193,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover; /* 이미지가 잘리지 않게 중앙 배치 */
-    border-radius: 10px;
+    border-radius: 1.2rem;
 }
 
 .question-container {
@@ -194,16 +201,16 @@ body {
 }
 
 .question {
-    background-color: var(--light-bg);
+    background-color: var(--neutral-color);
     padding: 1.5rem;
-    border-radius: 15px;
+    border-radius: 1.5rem;
     margin-bottom: 1.5rem;
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .question-text {
     font-size: 1.3rem;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-weight: bold;
     margin-bottom: 1.5rem;
     text-align: center;
@@ -221,25 +228,26 @@ body {
     border: 1px solid var(--border-color);
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
-    border-radius: 10px;
+    border-radius: 1.5rem; /* 둥근 모서리 */
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     text-align: left;
     width: 100%;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.05); /* 버튼에 그림자 추가 */
 }
 
 .option-button:hover {
-    background-color: var(--secondary-color);
-    color: #fff;
-    border-color: var(--secondary-color);
+    background-color: var(--neutral-color);
+    border-color: var(--neutral-color);
     transform: translateY(-2px);
+    box-shadow: 0 0.35rem 0.8rem rgba(0,0,0,0.1);
 }
 
 .option-button.selected {
-    background-color: var(--primary-color);
+    background-color: var(--tertiary-color);
     color: #fff;
-    border-color: var(--primary-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-color: var(--tertiary-color);
+    box-shadow: 0 0.35rem 0.8rem var(--shadow-medium);
 }
 
 .input-form {
@@ -249,42 +257,46 @@ body {
     margin-bottom: 0; 
     text-align: center;
     box-shadow: none;
+    display: flex;
+    justify-content: center; /* 버튼을 가로 중앙 정렬 */
 }
 
 .input-form .cta-button {
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
     padding: 1.2rem 2.5rem;
     font-size: 1.4rem;
     font-weight: bold;
-    border-radius: 15px; /* 둥근 버튼 */
+    border-radius: 1.5rem; /* 둥근 버튼 */
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(255, 192, 203, 0.4);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0.4rem 1rem var(--shadow-medium);
     margin-top: 2rem; /* 질문과 버튼 사이 간격 */
 }
 
 .input-form .cta-button:hover {
-    background-color: #ff9cb1;
+    background-color: #007bbd; /* Primary Color의 약간 더 어두운 버전 */
     transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1.2rem var(--shadow-medium);
 }
 
 /* Result Section */
 #result-section {
     display: none; /* 초기에는 숨김 */
-    padding: 1.5rem;
-    border-radius: 15px;
-    background-color: var(--card-bg);
-    box-shadow: 0 4px 10px var(--shadow-light);
+    padding: 0;
+    border-radius: 1.5rem;
+    background-color: transparent; /* 배경색 투명하게 */
+    box-shadow: none;
     text-align: center;
 }
 
 #result-section h2 {
-    font-family: 'Dokdo', cursive;
-    font-size: 3rem;
-    color: var(--primary-color);
+    font-family: 'Gowun Batang', serif;
+    font-size: 2.5rem;
+    color: var(--secondary-color);
     margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 #result-section .result-image-wrapper {
@@ -293,9 +305,9 @@ body {
     padding-bottom: 80%; /* 1:1 Aspect Ratio */
     position: relative;
     margin: 1.5rem auto;
-    border-radius: 50%; /* 원형 이미지 */
+    border-radius: 1.5rem; /* 원형 대신 둥근 사각형 */
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0.4rem 1rem rgba(0,0,0,0.1);
 }
 
 #result-section .result-image-wrapper img {
@@ -309,14 +321,14 @@ body {
 
 #result-section .result-description {
     font-size: 1.1rem;
-    color: var(--dark-gray);
+    color: var(--light-text-color);
     margin-bottom: 1.5rem;
 }
 
 #result-section .result-type {
     font-size: 1.3rem;
     font-weight: bold;
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
     margin-bottom: 1rem;
 }
 
@@ -350,7 +362,7 @@ body {
 .loading-dots span {
     width: 15px;
     height: 15px;
-    background-color: var(--accent-color);
+    background-color: var(--tertiary-color);
     border-radius: 50%;
     animation: jump 1s infinite ease-in-out;
 }
@@ -365,13 +377,13 @@ body {
 
 /* Explore Banner */
 .explore-banner {
-    background-color: var(--light-bg);
+    background-color: var(--neutral-color);
     padding: 1.5rem;
-    border-radius: 15px;
+    border-radius: 1.5rem;
     text-align: center;
     margin-top: 2rem;
     border: 1px solid var(--border-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.05);
 }
 
 .explore-banner h3 {
@@ -389,37 +401,45 @@ body {
     cursor: pointer;
     background-color: var(--card-bg);
     padding: 0.8rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease;
+    border-radius: 1.2rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .explore-item:hover {
-    transform: translateX(5px);
+    transform: translateY(-5px);
+    box-shadow: 0 0.35rem 0.8rem rgba(0,0,0,0.1);
 }
 
 .explore-thumbnail {
-    background: var(--secondary-color);
+    background: var(--tertiary-color);
     width: 60px;
     height: 60px;
-    border-radius: 8px;
+    border-radius: 0.75rem;
     flex-shrink: 0;
     display: flex; /* 중앙 정렬용 */
     align-items: center;
     justify-content: center;
     color: #fff;
     font-size: 0.8rem;
+    overflow: hidden; /* 추가: 이미지가 부모 영역을 벗어나지 않도록 함 */
+}
+
+.explore-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .explore-text .explore-title {
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-size: 1.1rem;
 }
 
 .explore-text .explore-hook {
     font-size: 0.9rem;
-    color: var(--dark-gray);
+    color: var(--light-text-color);
 }
 
 /* Footer */
@@ -429,8 +449,8 @@ body {
     background-color: var(--primary-color);
     color: #fff;
     font-size: 0.9rem;
-    margin-top: 2rem;
-    border-radius: 0 0 20px 20px; /* 하단만 둥글게 */
+    margin-top: auto; /* 푸터를 하단에 고정 */
+    border-radius: 0;
 }
 
 /* Desktop specific styles */
@@ -478,7 +498,7 @@ body {
         display: flex; /* flex로 변경 */
     }
     .container {
-        margin: 1rem; /* 모바일에서 여백 조정 */
+        margin: 0; /* 모바일에서 여백 제거 */
     }
 }
 
@@ -492,8 +512,8 @@ body {
 
 .content-card {
     background-color: var(--card-bg);
-    border-radius: 15px; /* 더 둥글게 */
-    box-shadow: 0 6px 15px var(--shadow-light);
+    border-radius: 1.5rem; /* 더 둥글게 */
+    box-shadow: 0 0.4rem 1rem var(--shadow-light);
     overflow: hidden;
     text-decoration: none;
     color: var(--text-color);
@@ -505,20 +525,20 @@ body {
 
 .content-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px var(--shadow-light);
+    box-shadow: 0 0.6rem 1.8rem var(--shadow-medium);
 }
 
 .content-card-thumbnail {
     width: 100%;
     padding-bottom: 65%; /* 이미지 비율 4:3 */
     position: relative;
-    background-color: var(--secondary-color);
+    background-color: var(--tertiary-color);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
-    font-family: 'Dokdo', cursive;
-    font-size: 2rem;
+    font-family: 'Gowun Batang', serif;
+    font-size: 1.8rem;
     overflow: hidden;
 }
 
@@ -534,14 +554,14 @@ body {
 .content-card-title {
     font-family: 'Gowun Batang', serif;
     font-size: 1.5rem;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     padding: 1rem 1.2rem 0.5rem;
     text-align: center;
 }
 
 .content-card-description {
     font-size: 1rem;
-    color: var(--dark-gray);
+    color: var(--light-text-color);
     padding: 0 1.2rem 1.2rem;
     text-align: center;
     flex-grow: 1; /* 남은 공간 채우기 */

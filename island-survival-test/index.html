@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>무인도에 떨어졌을 때 나의 생존 전략 | Life Test</title>
-    <meta name="description" content="무인도 생존 능력 테스트! 당신은 극한 상황에서 어떻게 살아남을까요?">
+    <title>무인도 생존 테스트 | Life Test</title>
+    <meta name="description" content="갑자기 무인도에 떨어졌다! 과연 나는 며칠이나 버틸 수 있을까? 당신의 생존력을 테스트해보세요.">
     <link rel="stylesheet" href="../css/style.css">
-    <!-- JSON-LD 구조화 데이터 삽입 예정 -->
 </head>
 <body>
     <div class="container">
@@ -16,75 +15,53 @@
             <div class="hamburger-menu">☰</div>
             <nav class="full-screen-nav">
                 <div class="close-button">X</div>
-                <ul id="content-list">
-                    <!-- 콘텐츠 목록이 여기에 동적으로 로드됩니다 -->
-                </ul>
+                <ul id="content-list"></ul>
             </nav>
         </header>
 
-        <!--
-        <div class="ad-banner top-width-ad">
-            <div class="ad-placeholder">광고: 상단 가로형 배너</div>
-        </div>
-        -->
-
         <main class="main-content">
             <div class="content-wrapper">
-                <!--
-                <aside class="ad-skyscraper left-height-ad">
-                    <div class="ad-placeholder-vertical">광고: 좌측 세로형</div>
-                </aside>
-                -->
-
                 <article class="content-area">
-                    <h1 class="content-title">무인도에 떨어졌을 때 나의 생존 전략</h1>
-                    <p class="content-description">식량 조달, 거처 마련, 구조 요청! 무인도에서 당신의 생존 능력은 몇 점일까요?</p>
-                    <div class="thumbnail-image">
-                        썸네일 이미지
+                    <div id="quiz-section">
+                        <h1 class="content-title">무인도 생존 테스트</h1>
+                        <p class="content-description">조난 당한 당신! 과연 무인도에서 어떻게 살아남을 것인가? 당신의 생존 전략을 확인하세요.</p>
+
+                        <div class="question-container">
+                            <div class="question current-question">
+                                <p class="question-text">1. 정신을 차려보니 무인도 해변이다. 가장 먼저 할 일은?</p>
+                                <div class="options">
+                                    <button class="option-button" data-score="3">주변을 정찰하여 지형과 자원을 파악한다</button>
+                                    <button class="option-button" data-score="2">해변에 SOS 구조 신호를 크게 그린다</button>
+                                    <button class="option-button" data-score="1">마실 물과 식량을 먼저 찾아 헤맨다</button>
+                                    <button class="option-button" data-score="0">일단 멘탈을 챙기기 위해 그늘에서 쉰다</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-form">
+                            <button class="cta-button">결과 보기</button>
+                        </div>
                     </div>
 
-                    <!--
-                    <div class="ad-banner body-ad-01">
-                        <div class="ad-placeholder">광고: 본문 상단</div>
-                    </div>
-                    -->
-
-                    <div class="input-form">
-                        <p>사용자 입력 필드</p>
-                        <input type="text" placeholder="당신의 이름을 입력하세요">
-                        <button class="cta-button">결과 보기</button>
-                    </div>
-
-                    <!--
-                    <div class="ad-banner body-ad-02">
-                        <div class="ad-placeholder">광고: 본문 하단</div>
-                    </div>
-                    -->
-
-                    <div class="explore-banner">
-                        <h3>다른 재미있는 테스트도 해보세요!</h3>
-                        <div class="explore-item">
-                            <div class="explore-thumbnail"></div>
-                            <div class="explore-text">
-                                <p class="explore-title">다른 콘텐츠 타이틀</p>
-                                <p class="explore-hook">클릭 유도 후킹 멘트</p>
+                    <!-- 결과 화면 -->
+                    <div id="result-section" style="display: none;">
+                        <h2>당신의 무인도 생존 결과는?!</h2>
+                        <p class="result-description">생존 전략 분석 중...</p>
+                        <p class="result-type">결과: 생존의 달인 (베어그릴스 급)</p>
+                        
+                        <div class="explore-banner">
+                            <h3>다른 재미있는 테스트도 해보세요!</h3>
+                            <div class="explore-item">
+                                <div class="explore-text">
+                                    <p class="explore-title">다른 콘텐츠 타이틀</p>
+                                    <p class="explore-hook">클릭 유도 후킹 멘트</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </article>
-
-                <!--
-                <aside class="ad-skyscraper right-height-ad">
-                    <div class="ad-placeholder-vertical">광고: 우측 세로형</div>
-                </aside>
-                -->
             </div>
         </main>
-
-        <div class="ad-banner bottom-width-ad">
-            <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="9736597908" -->
-            <div class="ad-placeholder">광고: 하단 가로형 배너</div>
-        </div>
 
         <!-- 푸터 -->
         <footer class="footer">
@@ -92,6 +69,65 @@
         </footer>
     </div>
 
+    <!-- 로딩 오버레이 -->
+    <div class="loading-overlay">
+        <div class="loading-dots">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+
     <script src="../js/script.js"></script>
+    <script>
+        const quizData = [
+            { question: "1. 정신을 차려보니 무인도 해변이다. 가장 먼저 할 일은?" },
+            { question: "2. 밤이 다가오고 있다. 잠자리는 어떻게 마련할까?" },
+            { question: "3. 식량이 떨어졌다. 눈앞에 정체 모를 열매가 있는데, 어떻게 할까?" },
+            { question: "4. 멀리 수평선에 배가 지나가는 것이 보인다. 당신의 행동은?" }
+        ];
+
+        let currentQ = 0;
+        let totalScore = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const qText = document.querySelector('.question-text');
+            const optsContainer = document.querySelector('.options');
+            const ctaBtn = document.querySelector('.cta-button');
+
+            function loadQ() {
+                if(currentQ < quizData.length) {
+                    qText.textContent = quizData[currentQ].question;
+                }
+            }
+
+            optsContainer.addEventListener('click', (e) => {
+                if(e.target.classList.contains('option-button')) {
+                    totalScore += parseInt(e.target.dataset.score, 10);
+                    currentQ++;
+                    if(currentQ < quizData.length) loadQ();
+                }
+            });
+
+            ctaBtn.addEventListener('click', () => {
+                let title = "", desc = "";
+                if(totalScore >= 10) { title = "베어그릴스 강림"; desc = "자연과 하나가 되어 무인도를 리조트처럼 즐기고 있습니다."; }
+                else if(totalScore >= 6) { title = "의지의 한국인"; desc = "끈질긴 생명력으로 끝까지 버텨 결국 구조되는 끈기의 아이콘."; }
+                else if(totalScore >= 3) { title = "로빈슨 크루소 워너비"; desc = "나름대로 노력은 하지만 서툰 솜씨로 고생을 사서 하는 스타일입니다."; }
+                else { title = "하루살이 생존자"; desc = "멘탈 붕괴! 야생에서의 생존은 너무나 가혹합니다."; }
+
+                document.querySelector('.result-type').textContent = `결과: ${title}`;
+                document.querySelector('.result-description').textContent = desc;
+
+                document.getElementById('quiz-section').style.display = 'none';
+                const loadingOverlay = document.querySelector('.loading-overlay');
+                const resultSection = document.getElementById('result-section');
+                
+                loadingOverlay.classList.add('show');
+                setTimeout(() => {
+                    loadingOverlay.classList.remove('show');
+                    resultSection.style.display = 'block';
+                }, 2000);
+            });
+        });
+    </script>
 </body>
 </html>

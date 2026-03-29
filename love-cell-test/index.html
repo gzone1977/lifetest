@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연애 세포 생존 테스트 | Life Test</title>
+    <meta name="description" content="당신의 연애 세포는 안녕하신가요? 심리 테스트로 연애 세포 생존율을 알아보세요!">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 상단 헤더 -->
+        <header class="header">
+            <div class="logo">Life Test</div>
+            <div class="hamburger-menu">☰</div>
+            <nav class="full-screen-nav">
+                <div class="close-button">X</div>
+                <ul id="content-list">
+                    <!-- 콘텐츠 목록이 여기에 동적으로 로드됩니다 -->
+                </ul>
+            </nav>
+        </header>
+
+        <!--
+        <div class="ad-banner top-width-ad">
+            <div class="ad-placeholder">광고: 상단 가로형 배너</div>
+        </div>
+        -->
+
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!--
+                <aside class="ad-skyscraper left-height-ad">
+                    <div class="ad-placeholder-vertical">광고: 좌측 세로형</div>
+                </aside>
+                -->
+
+                <article class="content-area">
+                    <div id="quiz-section">
+                        <h1 class="content-title">연애 세포 생존 테스트</h1>
+                        <p class="content-description">오랫동안 연애를 쉬었거나, 혹시 내 연애 세포가 다 죽은 건 아닐까 걱정되나요? 지금 바로 확인해보세요!</p>
+
+                        <!--
+                        <div class="ad-banner body-ad-01">
+                            <div class="ad-placeholder">광고: 본문 상단</div>
+                        </div>
+                        -->
+
+                        <div class="question-container">
+                            <!-- 질문이 여기에 동적으로 로드됩니다 -->
+                            <div class="question current-question">
+                                <p class="question-text">1. 로맨스 드라마나 영화를 볼 때 감흥이 없다.</p>
+                                <div class="options">
+                                    <button class="option-button" data-score="3">매우 그렇다</button>
+                                    <button class="option-button" data-score="2">그렇다</button>
+                                    <button class="option-button" data-score="1">그렇지 않다</button>
+                                    <button class="option-button" data-score="0">전혀 그렇지 않다</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--
+                        <div class="ad-banner body-ad-02">
+                            <div class="ad-placeholder">광고: 본문 하단</div>
+                        </div>
+                        -->
+
+                        <div class="input-form">
+                            <button class="cta-button">결과 보기</button>
+                        </div>
+                    </div>
+
+                    <!-- 결과 화면 (초기에는 숨김) -->
+                    <div id="result-section" style="display: none;">
+                        <h2>당신의 연애 세포 상태는?!</h2>
+                        <p class="result-description">이곳에 테스트 결과에 대한 상세 설명이 들어갑니다.</p>
+                        <p class="result-type">결과: 심정지 직전</p>
+                        <!-- 탐험 유도 배너 -->
+                        <div class="explore-banner">
+                            <h3>다른 재미있는 테스트도 해보세요!</h3>
+                            <div class="explore-item">
+                                <div class="explore-text">
+                                    <p class="explore-title">다른 콘텐츠 타이틀</p>
+                                    <p class="explore-hook">클릭 유도 후킹 멘트</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!--
+                <aside class="ad-skyscraper right-height-ad">
+                    <div class="ad-placeholder-vertical">광고: 우측 세로형</div>
+                </aside>
+                -->
+            </div>
+        </main>
+
+        <!--
+        <div class="ad-banner bottom-width-ad">
+            <div class="ad-placeholder">광고: 하단 가로형 배너</div>
+        </div>
+        -->
+
+        <!-- 푸터 -->
+        <footer class="footer">
+            <p>&copy; 2026 Life Test. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- 로딩 오버레이 -->
+    <div class="loading-overlay">
+        <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // 개별 테스트 데이터 설정 (나중에 모듈화 가능)
+        const quizData = [
+            { question: "1. 로맨스 드라마나 영화를 볼 때 감흥이 없다.", type: "score" },
+            { question: "2. 매주 주말 혼자 보내는 시간이 가장 편하고 즐겁다.", type: "score" },
+            { question: "3. 누군가 나에게 호감을 보여도 귀찮게 느껴진다.", type: "score" },
+            { question: "4. 데이트 준비를 하는 상상만 해도 피곤하다.", type: "score" },
+            { question: "5. 다른 사람들의 연애 이야기를 들어도 부럽지 않다.", type: "score" }
+        ];
+
+        const results = [
+            { maxScore: 5, title: "연애 세포 만렙!", desc: "언제든 사랑에 빠질 준비가 되어있네요. 핑크빛 로맨스가 코앞에 있습니다." },
+            { maxScore: 10, title: "연애 세포 생존", desc: "조금 휴식기를 가졌을 뿐, 여전히 사랑의 불씨가 남아있습니다. 좋은 사람을 만나면 언제든 타오를 거예요." },
+            { maxScore: 15, title: "연애 세포 동면 중", desc: "연애 세포들이 깊은 잠에 빠졌습니다. 의식적으로 설레는 일들을 만들어 깨워보는 건 어떨까요?" }
+        ];
+
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const questionText = document.querySelector('.question-text');
+            const optionsContainer = document.querySelector('.options');
+            const ctaButton = document.querySelector('.cta-button');
+
+            function loadQuestion() {
+                if (currentQuestionIndex < quizData.length) {
+                    questionText.textContent = quizData[currentQuestionIndex].question;
+                    // Reset options if needed (here we reuse the same HTML structure for scores)
+                }
+            }
+
+            optionsContainer.addEventListener('click', (e) => {
+                if(e.target.classList.contains('option-button')) {
+                    const score = parseInt(e.target.dataset.score, 10);
+                    totalScore += score;
+                    currentQuestionIndex++;
+                    
+                    if (currentQuestionIndex < quizData.length) {
+                        loadQuestion();
+                    } else {
+                        // All questions answered, show button
+                    }
+                }
+            });
+
+            ctaButton.addEventListener('click', () => {
+                 // Calculate final result based on totalScore and show result-section
+                 let finalResult = results[results.length - 1]; // Default to last (worst)
+                 for (let r of results) {
+                     if (totalScore <= r.maxScore) {
+                         finalResult = r;
+                         break;
+                     }
+                 }
+                 
+                 document.querySelector('.result-description').textContent = finalResult.desc;
+                 document.querySelector('.result-type').textContent = `결과: ${finalResult.title}`;
+                 
+                 document.getElementById('quiz-section').style.display = 'none';
+                 // 로딩 후 결과 보여주기 로직 필요 (script.js 참고)
+                 const loadingOverlay = document.querySelector('.loading-overlay');
+                 const resultSection = document.getElementById('result-section');
+                 
+                 loadingOverlay.classList.add('show');
+                 setTimeout(() => {
+                    loadingOverlay.classList.remove('show');
+                    resultSection.style.display = 'block';
+                 }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

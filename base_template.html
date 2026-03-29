@@ -3,18 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Test</title>
-    <meta name="description" content="MZ세대를 위한 재미있는 심리 테스트, 운세, MBTI 콘텐츠">
+    <title>분노조절장애 테스트 | Life Test</title>
+    <meta name="description" content="당신의 분노 조절 능력은? 지금 바로 심리 테스트로 알아보세요!">
     <link rel="stylesheet" href="../css/style.css">
     <!-- JSON-LD 구조화 데이터 삽입 예정 -->
 </head>
 <body>
-    <!--
-    <aside class="ad-skyscraper left-height-ad">
-        <div class="ad-placeholder-vertical">광고: 좌측 세로형</div>
-    </aside>
-    -->
-
     <div class="container">
         <!-- 상단 헤더 -->
         <header class="header">
@@ -36,15 +30,16 @@
 
         <main class="main-content">
             <div class="content-wrapper">
-
+                <!--
+                <aside class="ad-skyscraper left-height-ad">
+                    <div class="ad-placeholder-vertical">광고: 좌측 세로형</div>
+                </aside>
+                -->
 
                 <article class="content-area">
                     <div id="quiz-section">
-                        <h1 class="content-title">콘텐츠 타이틀</h1>
-                        <p class="content-description">2~3줄의 매력적인 후킹 멘트 및 썸네일 이미지 영역</p>
-                        <div class="thumbnail-image-wrapper">
-                            <img src="https://via.placeholder.com/600x400?text=Test+Thumbnail" alt="콘텐츠 썸네일">
-                        </div>
+                        <h1 class="content-title">분노조절장애 테스트</h1>
+                        <p class="content-description">사소한 일에도 욱하는 당신? 내 안의 화를 다스리는 법을 테스트를 통해 찾아보세요.</p>
 
                         <!--
                         <div class="ad-banner body-ad-01">
@@ -52,31 +47,39 @@
                         </div>
                         -->
 
-                        <div class="input-form">
-                            <p>사용자 입력 필드</p>
-                            <input type="text" placeholder="입력하세요">
-                            <button class="cta-button">결과 보기</button>
+                        <div class="question-container">
+                            <!-- 질문이 여기에 동적으로 로드됩니다 -->
+                            <div class="question current-question">
+                                <p class="question-text">1. 나는 쉽게 화를 내는 편이다.</p>
+                                <div class="options">
+                                    <button class="option-button" data-score="3">매우 그렇다</button>
+                                    <button class="option-button" data-score="2">그렇다</button>
+                                    <button class="option-button" data-score="1">그렇지 않다</button>
+                                    <button class="option-button" data-score="0">전혀 그렇지 않다</button>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="ad-banner body-ad-02" style="display: none;">
-                            <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="2049679574" -->
+                        <!--
+                        <div class="ad-banner body-ad-02">
                             <div class="ad-placeholder">광고: 본문 하단</div>
+                        </div>
+                        -->
+
+                        <div class="input-form">
+                            <button class="cta-button">결과 보기</button>
                         </div>
                     </div>
 
                     <!-- 결과 화면 (초기에는 숨김) -->
                     <div id="result-section" style="display: none;">
-                        <h2>당신의 결과는?!</h2>
-                        <div class="result-image-wrapper">
-                            <img src="https://via.placeholder.com/300x300?text=Result+Image" alt="결과 이미지">
-                        </div>
-                        <p class="result-description">이곳에 테스트 결과에 대한 상세 설명이 들어갑니다.</p>
-                        <p class="result-type">어울리는 유형: OOO</p>
+                        <h2>당신의 분노 지수는?!</h2>
+                        <p class="result-description">이곳에 테스트 결과에 대한 상세 설명이 들어갑니다. 당신은 평온함을 유지하는 타입입니다.</p>
+                        <p class="result-type">분노 지수: 낮음 (평온한 사자)</p>
                         <!-- 탐험 유도 배너 -->
                         <div class="explore-banner">
                             <h3>다른 재미있는 테스트도 해보세요!</h3>
                             <div class="explore-item">
-                                <div class="explore-thumbnail"><img src="https://via.placeholder.com/60x60?text=Thumb" alt="다른 콘텐츠 썸네일"></div>
                                 <div class="explore-text">
                                     <p class="explore-title">다른 콘텐츠 타이틀</p>
                                     <p class="explore-hook">클릭 유도 후킹 멘트</p>
@@ -86,26 +89,25 @@
                     </div>
                 </article>
 
-
+                <!--
+                <aside class="ad-skyscraper right-height-ad">
+                    <div class="ad-placeholder-vertical">광고: 우측 세로형</div>
+                </aside>
+                -->
             </div>
         </main>
 
-        <div class="ad-banner bottom-width-ad" style="display: none;">
-            <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="9736597908" -->
+        <!--
+        <div class="ad-banner bottom-width-ad">
             <div class="ad-placeholder">광고: 하단 가로형 배너</div>
         </div>
+        -->
 
         <!-- 푸터 -->
         <footer class="footer">
             <p>&copy; 2026 Life Test. All rights reserved.</p>
         </footer>
     </div>
-
-    <!-- 우측 스카이스크래퍼 광고 (데스크탑) -->
-    <aside class="ad-skyscraper right-height-ad" style="display: none;">
-        <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="4675842913" -->
-        <div class="ad-placeholder-vertical">광고: 우측 세로형</div>
-    </aside>
 
     <!-- 로딩 오버레이 -->
     <div class="loading-overlay">
