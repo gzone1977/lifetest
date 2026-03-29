@@ -1,5 +1,5 @@
 /* Google Fonts - 세련된 웹폰트 적용 */
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Dokdo&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Dokdo&display=swap");
 
 :root {
     --primary-color: #A2B9EE; /* 연한 파스텔 블루 */
@@ -187,15 +187,6 @@ body {
     height: 100%;
     object-fit: cover; /* 이미지가 잘리지 않게 중앙 배치 */
     border-radius: 10px;
-}
-
-.input-form {
-    background-color: var(--light-bg);
-    padding: 2rem;
-    border-radius: 15px;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .question-container {
@@ -443,39 +434,51 @@ body {
 }
 
 /* Desktop specific styles */
-@media (min-width: 768px) {
-    .container {
-        margin: 2rem auto;
-    }
-    .content-wrapper {
-        flex-direction: row;
+@media (min-width: 1024px) { /* 데스크탑 최소 너비 1024px */
+    body {
+        grid-template-columns: 200px minmax(320px, 800px) 200px; /* 좌측, 중앙, 우측 */
+        display: grid;
         align-items: flex-start;
+        padding: 0;
+    }
+
+    .container {
+        grid-column: 2; /* 중앙 칼럼에 배치 */
+        margin: 2rem 0; /* 상하 여백만 */
     }
 
     .ad-skyscraper {
-        display: flex; /* Show skyscrapers on desktop */
-        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 2rem; /* container와 높이 맞추기 */
     }
 
     .left-height-ad {
-        margin-right: 1.5rem;
+        grid-column: 1; /* 좌측 칼럼에 배치 */
     }
 
     .right-height-ad {
-        margin-left: 1.5rem;
-    }
-
-    .main-content {
-        padding: 1.5rem 0;
+        grid-column: 3; /* 우측 칼럼에 배치 */
     }
 
     .ad-placeholder { width: 728px; height: 90px; } /* 데스크탑 리더보드 */
     .ad-placeholder-vertical { min-width: 160px; height: 600px; } /* 데스크탑 스카이스크래퍼 */
+
+    .main-content {
+        padding: 1.5rem;
+    }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) { /* 모바일 및 태블릿 */
     .ad-skyscraper {
-        display: none; /* Hide skyscrapers on mobile */
+        display: none; /* 모바일에서 스카이스크래퍼 숨김 */
+    }
+    body {
+        display: flex; /* flex로 변경 */
+    }
+    .container {
+        margin: 1rem; /* 모바일에서 여백 조정 */
     }
 }
 
