@@ -66,6 +66,16 @@ body {
     font-weight: bold;
     color: #fff;
     text-shadow: none;
+    flex-grow: 1; /* 남은 공간을 채워 로고를 중앙으로 밀어냄 */
+    text-align: center;
+}
+
+.home-icon {
+    font-size: 2rem; /* 햄버거 메뉴와 유사하게 */
+    color: #fff; /* 흰색으로 */
+    text-decoration: none; /* 밑줄 제거 */
+    padding-right: 1rem; /* 로고와의 간격 */
+    line-height: 1; /* 이모티콘 수직 정렬을 위해 */
 }
 
 .hamburger-menu {
