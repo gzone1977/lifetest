@@ -30,6 +30,7 @@ body {
     justify-content: center;
     align-items: flex-start; /* 상단 정렬 */
     min-height: 100vh;
+    padding-top: 4rem; /* 고정 헤더 높이만큼 여백 추가 */
 }
 
 .container {
@@ -53,8 +54,10 @@ body {
     padding: 1rem 1.5rem;
     background-color: var(--primary-color);
     color: #fff;
-    position: sticky;
+    position: fixed; /* 헤더 위치 고정 */
+    width: 100%; /* 전체 너비 차지 */
     top: 0;
+    left: 0;
     z-index: 1000;
     border-radius: 0;
     box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1); /* 미묘한 그림자 */
