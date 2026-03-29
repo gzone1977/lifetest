@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>분노조절장애 테스트 | Life Test</title>
-    <meta name="description" content="당신의 분노 조절 능력은? 지금 바로 심리 테스트로 알아보세요!">
+    <title>테스트 제목 | Life Test</title>
+    <meta name="description" content="테스트 설명">
     <link rel="stylesheet" href="../css/style.css">
-    <!-- JSON-LD 구조화 데이터 삽입 예정 -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Google Fonts Icons 추가 -->
 </head>
 <body>
     <div class="container">
         <!-- 상단 헤더 -->
         <header class="header">
-            <a href="/" class="home-icon">🏠</a> <!-- Home 이모티콘 -->
+            <a href="/" class="home-icon"><span class="material-icons">home</span></a> <!-- Home 이모티콘 변경 -->
             <div class="logo">Life Test</div>
             <div class="hamburger-menu">☰</div>
             <nav class="full-screen-nav">
@@ -39,8 +39,8 @@
 
                 <article class="content-area">
                     <div id="quiz-section">
-                        <h1 class="content-title">분노조절장애 테스트</h1>
-                        <p class="content-description">사소한 일에도 욱하는 당신? 내 안의 화를 다스리는 법을 테스트를 통해 찾아보세요.</p>
+                        <h1 class="content-title">테스트 제목</h1>
+                        <p class="content-description">테스트 설명</p>
 
                         <!--
                         <div class="ad-banner body-ad-01">
@@ -51,12 +51,9 @@
                         <div class="question-container">
                             <!-- 질문이 여기에 동적으로 로드됩니다 -->
                             <div class="question current-question">
-                                <p class="question-text">1. 나는 쉽게 화를 내는 편이다.</p>
+                                <p class="question-text"></p>
                                 <div class="options">
-                                    <button class="option-button" data-score="3">매우 그렇다</button>
-                                    <button class="option-button" data-score="2">그렇다</button>
-                                    <button class="option-button" data-score="1">그렇지 않다</button>
-                                    <button class="option-button" data-score="0">전혀 그렇지 않다</button>
+                                    <!-- 옵션 버튼들이 여기에 동적으로 로드됩니다 -->
                                 </div>
                             </div>
                         </div>
@@ -74,9 +71,9 @@
 
                     <!-- 결과 화면 (초기에는 숨김) -->
                     <div id="result-section" style="display: none;">
-                        <h2>당신의 분노 지수는?!</h2>
-                        <p class="result-description">이곳에 테스트 결과에 대한 상세 설명이 들어갑니다. 당신은 평온함을 유지하는 타입입니다.</p>
-                        <p class="result-type">분노 지수: 낮음 (평온한 사자)</p>
+                        <h2>테스트 결과 제목</h2>
+                        <p class="result-description">테스트 결과 상세 설명이 들어갑니다.</p>
+                        <p class="result-type">결과 유형</p>
                         <!-- 탐험 유도 배너 -->
                         <div class="explore-banner">
                             <h3>다른 재미있는 테스트도 해보세요!</h3>
@@ -120,5 +117,6 @@
     </div>
 
     <script src="../js/script.js"></script>
+    <!-- 개별 테스트 스크립트가 로드될 위치 -->
 </body>
 </html>
