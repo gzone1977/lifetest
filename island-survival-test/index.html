@@ -30,10 +30,7 @@
                             <div class="question current-question">
                                 <p class="question-text">1. 정신을 차려보니 무인도 해변이다. 가장 먼저 할 일은?</p>
                                 <div class="options">
-                                    <button class="option-button" data-score="3">주변을 정찰하여 지형과 자원을 파악한다</button>
-                                    <button class="option-button" data-score="2">해변에 SOS 구조 신호를 크게 그린다</button>
-                                    <button class="option-button" data-score="1">마실 물과 식량을 먼저 찾아 헤맨다</button>
-                                    <button class="option-button" data-score="0">일단 멘탈을 챙기기 위해 그늘에서 쉰다</button>
+                                    <!-- 옵션 버튼들이 여기에 동적으로 로드됩니다 -->
                                 </div>
                             </div>
                         </div>
@@ -79,14 +76,14 @@
     <script src="../js/script.js"></script>
     <script>
         const quizData = [
-            { question: "1. 정신을 차려보니 무인도 해변이다. 가장 먼저 할 일은?" },
-            { question: "2. 밤이 다가오고 있다. 잠자리는 어떻게 마련할까?" },
-            { question: "3. 식량이 떨어졌다. 눈앞에 정체 모를 열매가 있는데, 어떻게 할까?" },
-            { question: "4. 멀리 수평선에 배가 지나가는 것이 보인다. 당신의 행동은?" },
-            { question: "5. 동굴을 발견했다. 안으로 들어가 볼까?" },
-            { question: "6. 비가 억수같이 쏟아진다. 어떻게 대처할까?" },
-            { question: "7. 야생 동물의 흔적을 발견했다. 나의 생각은?" },
-            { question: "8. 무인도에서 당신에게 가장 중요한 것은?" }
+            { question: "1. 정신을 차려보니 무인도 해변이다. 가장 먼저 할 일은?", options: [ {text: "주변을 정찰하여 지형과 자원을 파악한다", score: 3}, {text: "해변에 SOS 구조 신호를 크게 그린다", score: 2}, {text: "마실 물과 식량을 먼저 찾아 헤맨다", score: 1}, {text: "일단 멘탈을 챙기기 위해 그늘에서 쉰다", score: 0} ]},
+            { question: "2. 밤이 다가오고 있다. 잠자리는 어떻게 마련할까?", options: [ {text: "나무 위나 동굴 등 안전한 곳을 찾는다", score: 3}, {text: "간단히 나뭇가지로 비를 피할 공간을 만든다", score: 2}, {text: "모닥불을 피우고 그 옆에서 잔다", score: 1}, {text: "피곤해서 아무 데나 눕는다", score: 0} ]},
+            { question: "3. 식량이 떨어졌다. 눈앞에 정체 모를 열매가 있는데, 어떻게 할까?", options: [ {text: "조금 맛보고 독성 여부를 확인한다", score: 2}, {text: "새나 다른 동물이 먹는지 지켜본다", score: 3}, {text: "배고파 죽겠는데 그냥 먹는다", score: 0}, {text: "먹지 않고 다른 식량을 찾아본다", score: 1} ]},
+            { question: "4. 멀리 수평선에 배가 지나가는 것이 보인다. 당신의 행동은?", options: [ {text: "가장 눈에 띄게 큰 불을 피워 신호를 보낸다", score: 3}, {text: "소리를 지르거나 옷을 흔들어 필사적으로 알린다", score: 2}, {text: "지나갈 배는 지나갈 뿐... 체념한다", score: 0}, {text: "일단 숨어서 상황을 지켜본다", score: 1} ]},
+            { question: "5. 동굴을 발견했다. 안으로 들어가 볼까?", options: [ {text: "안전 여부 확인 후 조심스럽게 탐험한다", score: 3}, {text: "위험할 것 같아 다른 곳을 찾아본다", score: 1}, {text: "밤새 머물 수 있는 좋은 장소라 생각하고 바로 들어간다", score: 0}, {text: "입구에 표시를 해두고 나중에 다시 온다", score: 2} ]},
+            { question: "6. 비가 억수같이 쏟아진다. 어떻게 대처할까?", options: [ {text: "나뭇잎 등을 모아 빗물을 받는다", score: 3}, {text: "몸을 웅크리고 비가 그치기를 기다린다", score: 1}, {text: "비 맞으며 돌아다녀도 괜찮다", score: 0}, {text: "피할 곳을 찾아 뛰어간다", score: 2} ]},
+            { question: "7. 야생 동물의 흔적을 발견했다. 나의 생각은?", options: [ {text: "먹이로 삼을 수 있을까?", score: 2}, {text: "위험하니 피해야겠다.", score: 3}, {text: "어디로 갔을까? 따라가 본다.", score: 1}, {text: "별로 신경 쓰지 않는다.", score: 0} ]},
+            { question: "8. 무인도에서 당신에게 가장 중요한 것은?", options: [ {text: "생존에 필요한 도구와 지식", score: 3}, {text: "긍정적인 마음과 희망", score: 2}, {text: "안전한 잠자리와 휴식", score: 1}, {text: "구조될 것이라는 믿음", score: 0} ]}
         ];
 
         const results = [
@@ -107,69 +104,10 @@
             function loadQ() {
                 if(currentQ < quizData.length) {
                     qText.textContent = quizData[currentQ].question;
-                    optsContainer.innerHTML = ''; // 기존 옵션 초기화
-                    
-                    // 옵션 데이터는 퀴즈데이터에 없으므로, 기본 4개 옵션 버튼을 동적으로 생성하도록 변경
-                    const optionTexts = [
-                        "매우 그렇다", "그렇다", "그렇지 않다", "전혀 그렇지 않다"
-                    ];
-                    const optionScores = [
-                        3, 2, 1, 0
-                    ];
-
-                    if (currentQ === 0) { // 첫 질문의 옵션은 HTML에 이미 있으므로 넘김
-                         // do nothing, use existing HTML options
-                    } else if (currentQ === 1) {
-                        optsContainer.innerHTML = `
-                            <button class="option-button" data-score="3">나무 위나 동굴 등 안전한 곳을 찾는다</button>
-                            <button class="option-button" data-score="2">간단히 나뭇가지로 비를 피할 공간을 만든다</button>
-                            <button class="option-button" data-score="1">모닥불을 피우고 그 옆에서 잔다</button>
-                            <button class="option-button" data-score="0">피곤해서 아무 데나 눕는다</button>
-                        `;
-                    } else if (currentQ === 2) {
-                        optsContainer.innerHTML = `
-                            <button class="option-button" data-score="2">조금 맛보고 독성 여부를 확인한다</button>
-                            <button class="option-button" data-score="3">새나 다른 동물이 먹는지 지켜본다</button>
-                            <button class="option-button" data-score="0">배고파 죽겠는데 그냥 먹는다</button>
-                            <button class="option-button" data-score="1">먹지 않고 다른 식량을 찾아본다</button>
-                        `;
-                    } else if (currentQ === 3) {
-                        optsContainer.innerHTML = `
-                            <button class="option-button" data-score="3">가장 눈에 띄게 큰 불을 피워 신호를 보낸다</button>
-                            <button class="option-button" data-score="2">소리를 지르거나 옷을 흔들어 필사적으로 알린다</button>
-                            <button class="option-button" data-score="0">지나갈 배는 지나갈 뿐... 체념한다</button>
-                            <button class="option-button" data-score="1">일단 숨어서 상황을 지켜본다</button>
-                        `;
-                    } else if (currentQ === 4) {
-                        optsContainer.innerHTML = `
-                            <button class="option-button" data-score="3">안전 여부 확인 후 조심스럽게 탐험한다</button>
-                            <button class="option-button" data-score="1">위험할 것 같아 다른 곳을 찾아본다</button>
-                            <button class="option-button" data-score="0">밤새 머물 수 있는 좋은 장소라 생각하고 바로 들어간다</button>
-                            <button class="option-button" data-score="2">입구에 표시를 해두고 나중에 다시 온다</button>
-                        `;
-                    } else if (currentQ === 5) {
-                        optsContainer.innerHTML = `
-                            <button class="option-button" data-score="3">나뭇잎 등을 모아 빗물을 받는다</button>
-                            <button class="option-button" data-score="1">몸을 웅크리고 비가 그치기를 기다린다</button>
-                            <button class="option-button" data-score="0">비 맞으며 돌아다녀도 괜찮다</button>
-                            <button class="option-button" data-score="2">피할 곳을 찾아 뛰어간다</button>
-                        `;
-                    } else if (currentQ === 6) {
-                        optsContainer.innerHTML = `
-                            <button class="option-button" data-score="2">먹이로 삼을 수 있을까?</button>
-                            <button class="option-button" data-score="3">위험하니 피해야겠다.</button>
-                            <button class="option-button" data-score="1">어디로 갔을까? 따라가 본다.</button>
-                            <button class="option-button" data-score="0">별로 신경 쓰지 않는다.</button>
-                        `;
-                    } else if (currentQ === 7) {
-                        optsContainer.innerHTML = `
-                            <button class="option-button" data-score="3">생존에 필요한 도구와 지식</button>
-                            <button class="option-button" data-score="2">긍정적인 마음과 희망</button>
-                            <button class="option-button" data-score="1">안전한 잠자리와 휴식</button>
-                            <button class="option-button" data-score="0">구조될 것이라는 믿음</button>
-                        `;
-                    }
-                    
+                    optsContainer.innerHTML = ""; // 기존 옵션 초기화
+                    quizData[currentQ].options.forEach(opt => {
+                        optsContainer.innerHTML += `<button class="option-button" data-score="${opt.score}">${opt.text}</button>`;
+                    });
                 } else {
                      // 모든 질문 완료 후 버튼 활성화 또는 이동 로직 (필요시 추가)
                 }
@@ -177,13 +115,24 @@
 
             optsContainer.addEventListener("click", (e) => {
                 if(e.target.classList.contains("option-button")) {
+                    // 이전에 선택된 버튼의 'selected' 클래스 제거 (필요시)
+                    const prevSelected = optsContainer.querySelector(".option-button.selected");
+                    if (prevSelected) {
+                        prevSelected.classList.remove("selected");
+                    }
+                    // 현재 클릭된 버튼에 'selected' 클래스 추가
+                    e.target.classList.add("selected");
+
                     totalScore += parseInt(e.target.dataset.score, 10);
                     currentQ++;
-                    if(currentQ < quizData.length) {
-                        loadQ();
-                    } else {
-                        showResult();
-                    }
+                    
+                    setTimeout(() => { // 다음 질문으로 넘어가는 딜레이
+                        if(currentQ < quizData.length) {
+                            loadQ();
+                        } else {
+                            showResult();
+                        }
+                    }, 300); // 0.3초 딜레이
                 }
             });
 

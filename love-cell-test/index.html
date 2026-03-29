@@ -51,10 +51,7 @@
                             <div class="question current-question">
                                 <p class="question-text">1. 로맨스 드라마나 영화를 볼 때 감흥이 없다.</p>
                                 <div class="options">
-                                    <button class="option-button" data-score="3">매우 그렇다</button>
-                                    <button class="option-button" data-score="2">그렇다</button>
-                                    <button class="option-button" data-score="1">그렇지 않다</button>
-                                    <button class="option-button" data-score="0">전혀 그렇지 않다</button>
+                                    <!-- 옵션 버튼들이 여기에 동적으로 로드됩니다 -->
                                 </div>
                             </div>
                         </div>
@@ -148,7 +145,10 @@
             function loadQuestion() {
                 if (currentQuestionIndex < quizData.length) {
                     questionText.textContent = quizData[currentQuestionIndex].question;
-                    // 기존 버튼들을 초기화하고 다시 로드할 필요가 있을 경우 여기에 로직 추가 (현재는 점수 기반이라 유지)
+                    optionsContainer.innerHTML = ""; // 기존 옵션 초기화
+                    quizData[currentQuestionIndex].options.forEach(opt => {
+                        optionsContainer.innerHTML += `<button class="option-button" data-score="${opt.score}">${opt.text}</button>`;
+                    });
                 }
             }
 
