@@ -6,92 +6,166 @@
     <title>나와 찰떡궁합인 간식은? | Life Test</title>
     <meta name="description" content="MBTI로 알아보는 나의 간식 취향! 당신의 성격에 딱 맞는 간식은 무엇일까요?">
     <link rel="stylesheet" href="../css/style.css">
-    <!-- JSON-LD 구조화 데이터 삽입 예정 -->
 </head>
 <body>
     <div class="container">
-        <!-- 상단 헤더 -->
         <header class="header">
             <div class="logo">Life Test</div>
             <div class="hamburger-menu">☰</div>
             <nav class="full-screen-nav">
                 <div class="close-button">X</div>
-                <ul id="content-list">
-                    <!-- 콘텐츠 목록이 여기에 동적으로 로드됩니다 -->
-                </ul>
+                <ul id="content-list"></ul>
             </nav>
         </header>
 
-        <!--
-        <div class="ad-banner top-width-ad">
-            <div class="ad-placeholder">광고: 상단 가로형 배너</div>
-        </div>
-        -->
-
         <main class="main-content">
             <div class="content-wrapper">
-                <!--
-                <aside class="ad-skyscraper left-height-ad">
-                    <div class="ad-placeholder-vertical">광고: 좌측 세로형</div>
-                </aside>
-                -->
-
                 <article class="content-area">
-                    <h1 class="content-title">나와 찰떡궁합인 간식은?</h1>
-                    <p class="content-description">MBTI 유형별 간식 테스트! 당신의 성격에 숨겨진 간식 취향을 지금 바로 알아보세요.</p>
-                    <div class="thumbnail-image">
-                        썸네일 이미지
+                    <div id="quiz-section">
+                        <h1 class="content-title">나와 찰떡궁합인 간식은?</h1>
+                        <p class="content-description">MBTI 유형별 간식 테스트! 당신의 성격에 숨겨진 간식 취향을 지금 바로 알아보세요.</p>
+                        
+                        <div class="question-container">
+                            <div class="question current-question">
+                                <p class="question-text">1. 친구들과 간식 파티를 계획할 때, 나의 역할은?</p>
+                                <div class="options">
+                                    <button class="option-button" data-type="E">다양한 간식을 알아보고 적극적으로 제안한다</button>
+                                    <button class="option-button" data-type="I">친구가 고른 간식에 맞춰 조용히 따른다</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="input-form">
+                            <button class="cta-button">결과 보기</button>
+                        </div>
                     </div>
 
-                    <!--
-                    <div class="ad-banner body-ad-01">
-                        <div class="ad-placeholder">광고: 본문 상단</div>
-                    </div>
-                    -->
-
-                    <div class="input-form">
-                        <p>사용자 입력 필드</p>
-                        <input type="text" placeholder="이름을 입력하세요">
-                        <button class="cta-button">결과 보기</button>
-                    </div>
-
-                    <!--
-                    <div class="ad-banner body-ad-02">
-                        <div class="ad-placeholder">광고: 본문 하단</div>
-                    </div>
-                    -->
-
-                    <div class="explore-banner">
-                        <h3>다른 재미있는 테스트도 해보세요!</h3>
-                        <div class="explore-item">
-                            <div class="explore-thumbnail"></div>
-                            <div class="explore-text">
-                                <p class="explore-title">다른 콘텐츠 타이틀</p>
-                                <p class="explore-hook">클릭 유도 후킹 멘트</p>
+                    <div id="result-section" style="display: none;">
+                        <h2>당신과 찰떡궁합 간식은?!</h2>
+                        <p class="result-description">분석 결과가 여기에 나타납니다.</p>
+                        <p class="result-type">결과: 단짠단짠 '꼬깔콘'</p>
+                        <div class="explore-banner">
+                            <h3>다른 재미있는 테스트도 해보세요!</h3>
+                            <div class="explore-item">
+                                <div class="explore-text">
+                                    <p class="explore-title">다른 콘텐츠 타이틀</p>
+                                    <p class="explore-hook">클릭 유도 후킹 멘트</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </article>
-
-                <!--
-                <aside class="ad-skyscraper right-height-ad">
-                    <div class="ad-placeholder-vertical">광고: 우측 세로형</div>
-                </aside>
-                -->
             </div>
         </main>
 
-        <div class="ad-banner bottom-width-ad">
-            <!-- data-ad-client="ca-pub-9335289087106264" data-ad-slot="9736597908" -->
-            <div class="ad-placeholder">광고: 하단 가로형 배너</div>
-        </div>
-
-        <!-- 푸터 -->
         <footer class="footer">
             <p>&copy; 2026 Life Test. All rights reserved.</p>
         </footer>
     </div>
 
+    <div class="loading-overlay">
+        <div class="loading-dots">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+
     <script src="../js/script.js"></script>
+    <script>
+        const quizData = [
+            { question: "1. 친구들과 간식 파티를 계획할 때, 나의 역할은?", options: [{text: "다양한 간식을 알아보고 적극적으로 제안한다 (E)", val: "E"}, {text: "친구가 고른 간식에 맞춰 조용히 따른다 (I)", val: "I"}] },
+            { question: "2. 처음 보는 신기한 간식이 있다면, 나는?", options: [{text: "일단 맛보고 본다 (S)", val: "S"}, {text: "성분이나 맛을 상상하며 분석한다 (N)", val: "N"}] },
+            { question: "3. 간식을 먹다가 불량이 나왔다. 나의 반응은?", options: [{text: "고객센터에 전화해서 논리적으로 설명한다 (T)", val: "T"}, {text: "다음에 다시 사 먹지 뭐 하고 넘어간다 (F)", val: "F"}] },
+            { question: "4. 간식을 고를 때, 나의 기준은?", options: [{text: "평소 좋아하던 간식을 망설임 없이 고른다 (J)", val: "J"}, {text: "그날그날 끌리는 간식을 즉흥적으로 고른다 (P)", val: "P"}] },
+            { question: "5. 간식을 먹는 도중, 새로운 간식이 눈에 들어왔다. 나는?", options: [{text: "먹던 간식을 다 먹고 나서 새로운 간식을 먹는다 (J)", val: "J"}, {text: "먹던 간식을 잠시 멈추고 새로운 간식에 손이 간다 (P)", val: "P"}] },
+            { question: "6. 간식을 친구와 나눠 먹을 때, 나의 스타일은?", options: [{text: "정확하게 반으로 나누려고 한다 (T)", val: "T"}, {text: "대충 나누고 친구가 더 많이 먹어도 괜찮다 (F)", val: "F"}] },
+            { question: "7. 특정 간식에 대한 비판적인 후기를 보았다. 나는?", options: [{text: "직접 먹어보고 판단한다 (S)", val: "S"}, {text: "후기를 믿고 구매하지 않는다 (N)", val: "N"}] },
+            { question: "8. 스트레스 받을 때 찾는 간식은?", options: [{text: "달콤하고 자극적인 맛으로 기분 전환 (E)", val: "E"}, {text: "담백하고 익숙한 맛으로 마음 안정 (I)", val: "I"}] }
+        ];
+
+        const results = [
+            { type: "ESTJ", title: "단짠단짠 '꼬깔콘'", desc: "계획적이고 현실적인 당신! 꼬깔콘처럼 익숙하지만 언제나 만족감을 주는 간식을 선호합니다. 짭짤한 맛과 고소함의 조화가 당신의 실용적인 성격과 잘 어울립니다." },
+            { type: "INFP", title: "감성 촉촉 '초코파이'", desc: "이상주의적이고 감성적인 당신! 초코파이처럼 부드럽고 따뜻한 감동을 주는 간식을 좋아합니다. 따뜻한 우유와 함께라면 당신의 감성은 더욱 풍부해질 것입니다." },
+            { type: "ENFP", title: "톡톡 튀는 '새콤달콤'", desc: "활동적이고 재기발랄한 당신! 새콤달콤처럼 상큼하고 다채로운 매력을 가진 간식을 선호합니다. 친구들과 함께 나눠 먹으면 즐거움이 두 배가 될 거예요." },
+            { type: "ISTJ", title: "기본에 충실한 '포카칩'", desc: "신중하고 책임감이 강한 당신! 포카칩처럼 기본에 충실하면서도 변함없는 맛을 선기는 간식을 좋아합니다. 바삭한 식감은 당신의 스트레스를 날려줄 것입니다." },
+            { type: "ESFJ", title: "모두를 위한 '칸쵸'", desc: "사교적이고 정이 많은 당신! 칸쵸처럼 달콤하고 부드러운 맛으로 모두에게 사랑받는 간식을 선호합니다. 작지만 알찬 칸쵸처럼 당신은 주변 사람들을 잘 챙깁니다." },
+            { type: "INTJ", title: "심오한 맛의 '고래밥'", desc: "독립적이고 분석적인 당신! 고래밥처럼 다양한 모양과 맛을 탐구하는 간식을 좋아합니다. 하나하나 뜯어 먹으며 생각에 잠기는 것이 당신의 스타일입니다." },
+            { type: "ISFJ", title: "편안하고 든든한 '몽쉘'", desc: "조용하고 성실한 당신! 몽쉘처럼 부드럽고 편안한 달콤함을 주는 간식을 선호합니다. 익숙한 맛에서 안정감을 느끼며, 혼자만의 시간을 즐기는 것을 좋아합니다." },
+            { type: "ENTP", title: "도전적인 '신당동 떡볶이'", desc: "새로운 도전을 즐기는 당신! 신당동 떡볶이처럼 매콤하고 자극적인 맛으로 끊임없이 새로운 경험을 추구합니다. 친구들과 함께 즐기면 더욱 빛나는 당신입니다." },
+            { type: "ESTP", title: "짜릿한 즐거움 '과자 파티팩'", desc: "활동적이고 즉흥적인 당신! 다양한 맛을 한 번에 즐길 수 있는 과자 파티팩처럼 짜릿한 즐거움을 추구합니다. 매 순간을 즐기고 즉흥적인 모험을 좋아합니다." },
+            { type: "INFJ", title: "따뜻한 위로 '빈츠'", desc: "통찰력 있고 공감능력이 뛰어난 당신! 빈츠처럼 깊고 부드러운 맛으로 따뜻한 위로를 주는 간식을 선호합니다. 섬세한 감성으로 주변 사람들을 보듬어 줍니다." },
+            { type: "ENFJ", title: "모두가 행복한 '홈런볼'", desc: "이타적이고 사람을 좋아하는 당신! 홈런볼처럼 부드럽고 달콤한 맛으로 모두에게 기쁨을 주는 간식을 선호합니다. 주변 사람들과 함께 먹으며 행복을 나누는 것을 좋아합니다." },
+            { type: "ISTP", title: "자유로운 영혼 '새우깡'", desc: "논리적이고 실용적인 당신! 새우깡처럼 심플하지만 중독성 있는 맛을 즐깁니다. 자유로운 영혼으로 자신만의 방식으로 삶을 살아갑니다." },
+            { type: "ENTJ", title: "야심찬 전략 '오징어땅콩'", desc: "결단력 있고 야심찬 당신! 오징어땅콩처럼 오묘한 맛의 조화와 전략적인 먹는 재미를 선호합니다. 목표를 향해 끊임없이 나아가며 성공을 쟁취합니다." },
+            { type: "INTP", title: "독창적인 사고 '칙촉'", desc: "창의적이고 논리적인 당신! 칙촉처럼 달콤하면서도 예상치 못한 초코칩의 조화처럼 독창적인 아이디어를 좋아합니다. 자신만의 세계에서 새로운 것을 탐구합니다." },
+            { type: "ISFP", title: "평화로운 휴식 '누네띠네'", desc: "겸손하고 예술적인 당신! 누네띠네처럼 바삭하고 달콤한 맛으로 평화로운 휴식을 즐깁니다. 소박한 행복을 추구하며 자연을 사랑합니다." },
+            { type: "ESFP", title: "즉흥적인 즐거움 '젤리'", desc: "개방적이고 즉흥적인 당신! 젤리처럼 알록달록하고 쫄깃한 맛으로 순간의 즐거움을 만끽합니다. 사람들과 함께 어울리며 에너지를 발산하는 것을 좋아합니다." }
+        ];
+
+        let currentQ = 0;
+        let mbtiScores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const qText = document.querySelector(".question-text");
+            const optsContainer = document.querySelector(".options");
+            const ctaBtn = document.querySelector(".cta-button");
+
+            function loadQ() {
+                if(currentQ < quizData.length) {
+                    qText.textContent = quizData[currentQ].question;
+                    optsContainer.innerHTML = ""; // 기존 옵션 초기화
+                    quizData[currentQ].options.forEach(opt => {
+                        optsContainer.innerHTML += `<button class="option-button" data-type="${opt.val}">${opt.text}</button>`;
+                    });
+                } else {
+                     // 모든 질문 완료 후 버튼 활성화 또는 이동 로직 (필요시 추가)
+                }
+            }
+            
+            loadQ();
+
+            optsContainer.addEventListener("click", (e) => {
+                if(e.target.classList.contains("option-button")) {
+                    mbtiScores[e.target.dataset.type]++;
+                    currentQ++;
+                    if(currentQ < quizData.length) {
+                        loadQ();
+                    } else {
+                         showResult();
+                    }
+                }
+            });
+
+            ctaBtn.addEventListener("click", () => {
+                 if(currentQ < quizData.length) {
+                     alert("모든 질문에 답변해주세요!");
+                 } else {
+                     showResult();
+                 }
+            });
+
+            function showResult() {
+                let mbtiType = "";
+                mbtiType += mbtiScores.E > mbtiScores.I ? "E" : "I";
+                mbtiType += mbtiScores.S > mbtiScores.N ? "S" : "N";
+                mbtiType += mbtiScores.T > mbtiScores.F ? "T" : "F";
+                mbtiType += mbtiScores.J > mbtiScores.P ? "J" : "P";
+
+                let finalResult = results.find(r => r.type === mbtiType) || results[0];
+
+                document.querySelector(".result-type").textContent = `결과: ${finalResult.title}`;
+                document.querySelector(".result-description").textContent = finalResult.desc;
+
+                document.getElementById("quiz-section").style.display = "none";
+                const loadingOverlay = document.querySelector(".loading-overlay");
+                const resultSection = document.getElementById("result-section");
+                
+                loadingOverlay.classList.add("show");
+                setTimeout(() => {
+                    loadingOverlay.classList.remove("show");
+                    resultSection.style.display = "block";
+                }, 2000);
+            }
+        });
+    </script>
 </body>
 </html>

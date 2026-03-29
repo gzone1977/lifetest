@@ -30,8 +30,8 @@
                             <div class="question current-question">
                                 <p class="question-text">1. 휴일 아침, 눈을 떴을 때 나의 모습은?</p>
                                 <div class="options">
-                                    <button class="option-button" data-val="A">벌떡 일어나 밖으로 나갈 준비를 한다</button>
-                                    <button class="option-button" data-val="B">이불 속에서 뒹굴거리며 여유를 즐긴다</button>
+                                    <button class="option-button" data-val="active">벌떡 일어나 밖으로 나갈 준비를 한다</button>
+                                    <button class="option-button" data-val="calm">이불 속에서 뒹굴거리며 여유를 즐긴다</button>
                                 </div>
                             </div>
                         </div>
@@ -77,57 +77,88 @@
     <script src="../js/script.js"></script>
     <script>
         const quizData = [
-            { question: "1. 휴일 아침, 눈을 떴을 때 나의 모습은?" },
-            { question: "2. 친구들과 밥을 먹으러 갔다. 메뉴 고르기 담당은?" },
-            { question: "3. 낯선 사람과 단둘이 남겨졌을 때 나의 태도는?" }
+            { question: "1. 휴일 아침, 눈을 떴을 때 나의 모습은?", options: [{text: "벌떡 일어나 밖으로 나갈 준비를 한다", val: "active"}, {text: "이불 속에서 뒹굴거리며 여유를 즐긴다", val: "calm"}] },
+            { question: "2. 친구들과 밥을 먹으러 갔다. 메뉴 고르기 담당은?", options: [{text: "내가 주도적으로 메뉴를 정한다", val: "leader"}, {text: "친구들의 의견에 따라간다", val: "follower"}] },
+            { question: "3. 낯선 사람과 단둘이 남겨졌을 때 나의 태도는?", options: [{text: "먼저 말을 걸어 분위기를 이끈다", val: "social"}, {text: "어색함을 견디다 조용히 자리를 피한다", val: "reserved"}] },
+            { question: "4. 새로운 환경에 적응하는 나만의 방법은?", options: [{text: "일단 몸으로 부딪히며 경험한다", val: "practical"}, {text: "정보를 수집하고 계획을 세운다", val: "analytical"}] },
+            { question: "5. 위기 상황이 발생했을 때, 당신의 행동은?", options: [{text: "침착하게 상황을 분석하고 해결책을 찾는다", val: "calm"}, {text: "본능적으로 위험을 피하고 안전한 곳으로 도망친다", val: "instinct"}] },
+            { question: "6. 여가 시간에 주로 무엇을 하며 보내는가?", options: [{text: "활동적인 취미 (운동, 여행 등)", val: "active"}, {text: "정적인 취미 (독서, 영화 감상 등)", val: "calm"}] },
+            { question: "7. 목표를 달성하기 위해 어떤 노력을 하는가?", options: [{text: "꾸준하고 성실하게 노력한다", val: "persistent"}, {text: "효율적인 방법을 찾아 빠르게 달성한다", val: "efficient"}] },
+            { question: "8. 사람들과의 관계에서 가장 중요하게 생각하는 것은?", options: [{text: "서로의 다름을 존중하는 것", val: "harmony"}, {text: "솔직하고 직설적인 소통", val: "direct"}] }
+        ];
+
+        const results = [
+            { type: "lion", title: "위풍당당 리더, 사자", desc: "타고난 리더십과 카리스마로 주변을 이끄는 당신! 사자처럼 강인하고 용맹하며, 어떤 상황에서도 당당함을 잃지 않는 리더의 기질을 타고났습니다. 왕 중의 왕, 당신의 다음 생은 사자입니다!" },
+            { type: "cat", title: "도도하고 독립적인 고양이", desc: "자유를 사랑하고 자신만의 공간과 시간을 중요하게 생각하는 당신! 고양이처럼 도도하고 신비로운 매력을 가지고 있으며, 타인의 시선에 얽매이지 않고 독립적인 삶을 추구합니다. 당신의 다음 생은 매력적인 고양이입니다." },
+            { type: "dog", title: "충성심 강한 친구, 리트리버", desc: "사람을 좋아하고 언제나 긍정적인 에너지를 뿜어내는 당신! 리트리버처럼 충성심이 강하고 따뜻한 마음을 가졌으며, 주변 사람들에게 행복을 전파하는 사랑스러운 존재입니다. 당신의 다음 생은 모두에게 사랑받는 리트리버입니다." },
+            { type: "owl", title: "현명한 지식인, 올빼미", desc: "깊은 통찰력과 지혜로 세상을 바라보는 당신! 올빼미처럼 조용하고 사려 깊으며, 끊임없이 배우고 탐구하는 것을 즐기는 지식인입니다. 당신의 다음 생은 현명한 올빼미입니다." },
+            { type: "wolf", title: "강렬한 카리스마, 늑대", desc: "강렬한 눈빛과 통찰력으로 팀을 이끄는 당신! 늑대처럼 독립적이면서도 무리 속에서 강력한 존재감을 드러내며, 목표를 향해 끈질기게 나아갑니다. 당신의 다음 생은 신비로운 늑대입니다." },
+            { type: "rabbit", title: "섬세하고 재빠른 토끼", desc: "예민한 감각과 빠른 판단력으로 위험을 감지하는 당신! 토끼처럼 섬세하고 상황 파악이 빠르며, 주변 환경에 민감하게 반응하여 자신을 보호하는 데 능합니다. 당신의 다음 생은 사랑스러운 토끼입니다." },
+            { type: "fox", title: "영리하고 재치 있는 여우", desc: "뛰어난 지능과 재치로 어떤 상황도 유리하게 만드는 당신! 여우처럼 영리하고 민첩하며, 유연한 사고로 문제를 해결하는 데 능숙합니다. 당신의 다음 생은 매력적인 여우입니다." },
+            { type: "bear", title: "온순하지만 강인한 곰", desc: "겉으로는 온순해 보이지만 내면에는 강인한 힘을 지닌 당신! 곰처럼 묵묵하고 인내심이 강하며, 자신과 주변 사람들을 보호하는 데 헌신적입니다. 당신의 다음 생은 듬직한 곰입니다." }
         ];
 
         let currentQ = 0;
-        let scores = { A: 0, B: 0 };
+        let scores = { active: 0, calm: 0, leader: 0, follower: 0, social: 0, reserved: 0, practical: 0, analytical: 0, instinct: 0, persistent: 0, efficient: 0, harmony: 0, direct: 0 };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const qText = document.querySelector('.question-text');
-            const optsContainer = document.querySelector('.options');
-            const ctaBtn = document.querySelector('.cta-button');
+        document.addEventListener("DOMContentLoaded", () => {
+            const qText = document.querySelector(".question-text");
+            const optsContainer = document.querySelector(".options");
+            const ctaBtn = document.querySelector(".cta-button");
 
             function loadQ() {
                 if(currentQ < quizData.length) {
                     qText.textContent = quizData[currentQ].question;
+                    optsContainer.innerHTML = ""; // 기존 옵션 초기화
+                    quizData[currentQ].options.forEach(opt => {
+                        optsContainer.innerHTML += `<button class="option-button" data-val="${opt.val}">${opt.text}</button>`;
+                    });
+                } else {
+                     // 모든 질문 완료 후 버튼 활성화 또는 이동 로직 (필요시 추가)
                 }
             }
+            
+            loadQ();
 
-            optsContainer.addEventListener('click', (e) => {
-                if(e.target.classList.contains('option-button')) {
-                    const val = e.target.dataset.val || 'A';
-                    scores[val]++;
+            optsContainer.addEventListener("click", (e) => {
+                if(e.target.classList.contains("option-button")) {
+                    scores[e.target.dataset.val]++;
                     currentQ++;
-                    if(currentQ < quizData.length) loadQ();
+                    if(currentQ < quizData.length) {
+                        loadQ();
+                    } else {
+                         showResult();
+                    }
                 }
             });
 
-            ctaBtn.addEventListener('click', () => {
-                let title = "", desc = "";
-                if(scores.A > scores.B) { 
-                    title = "에너지 넘치는 리트리버"; 
-                    desc = "사람을 좋아하고 언제나 긍정적인 에너지를 뿜어내는 당신은 대형견의 피가 흐릅니다."; 
-                } else { 
-                    title = "도도한 매력의 고양이"; 
-                    desc = "독립심이 강하고 자기만의 시간을 중요시하는 당신은 냥이 그 자체입니다."; 
-                }
+            ctaBtn.addEventListener("click", () => {
+                 if(currentQ < quizData.length) {
+                     alert("모든 질문에 답변해주세요!");
+                 } else {
+                     showResult();
+                 }
+            });
 
-                document.querySelector('.result-type').textContent = `결과: ${title}`;
-                document.querySelector('.result-description').textContent = desc;
-
-                document.getElementById('quiz-section').style.display = 'none';
-                const loadingOverlay = document.querySelector('.loading-overlay');
-                const resultSection = document.getElementById('result-section');
+            function showResult() {
+                let maxScoreType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
                 
-                loadingOverlay.classList.add('show');
+                let finalResult = results.find(r => r.type === maxScoreType) || results[0];
+                // 모든 타입이 0점일 경우를 대비하여 기본값 설정 (혹은 가장 적절한 타입으로)
+
+                document.querySelector(".result-type").textContent = `결과: ${finalResult.title}`;
+                document.querySelector(".result-description").textContent = finalResult.desc;
+
+                document.getElementById("quiz-section").style.display = "none";
+                const loadingOverlay = document.querySelector(".loading-overlay");
+                const resultSection = document.getElementById("result-section");
+                
+                loadingOverlay.classList.add("show");
                 setTimeout(() => {
-                    loadingOverlay.classList.remove('show');
-                    resultSection.style.display = 'block';
+                    loadingOverlay.classList.remove("show");
+                    resultSection.style.display = "block";
                 }, 2000);
-            });
+            }
         });
     </script>
 </body>

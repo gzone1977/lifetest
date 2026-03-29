@@ -82,51 +82,140 @@
             { question: "1. 정신을 차려보니 무인도 해변이다. 가장 먼저 할 일은?" },
             { question: "2. 밤이 다가오고 있다. 잠자리는 어떻게 마련할까?" },
             { question: "3. 식량이 떨어졌다. 눈앞에 정체 모를 열매가 있는데, 어떻게 할까?" },
-            { question: "4. 멀리 수평선에 배가 지나가는 것이 보인다. 당신의 행동은?" }
+            { question: "4. 멀리 수평선에 배가 지나가는 것이 보인다. 당신의 행동은?" },
+            { question: "5. 동굴을 발견했다. 안으로 들어가 볼까?" },
+            { question: "6. 비가 억수같이 쏟아진다. 어떻게 대처할까?" },
+            { question: "7. 야생 동물의 흔적을 발견했다. 나의 생각은?" },
+            { question: "8. 무인도에서 당신에게 가장 중요한 것은?" }
+        ];
+
+        const results = [
+            { maxScore: 8, title: "하루살이 생존자", desc: "야생에서의 생존은 당신에게 너무나 가혹합니다. 멘탈 붕괴와 함께 의욕을 상실하기 쉬워요. 빠르게 구조 신호를 보내는 것이 최우선입니다." },
+            { maxScore: 14, title: "로빈슨 크루소 워너비", desc: "나름대로 노력은 하지만 서툰 솜씨로 고생을 사서 하는 스타일입니다. 기본적인 생존 기술을 익히고 계획을 세우는 연습이 필요해요. 혼자보다는 동료와 함께하는 것이 좋습니다." },
+            { maxScore: 20, title: "의지의 한국인", desc: "끈질긴 생명력과 강한 의지로 어떤 난관도 헤쳐나가는 끈기의 아이콘입니다. 포기하지 않고 끝까지 버텨 결국 구조되는 모습을 보여줄 거예요. 약간의 지식만 더해진다면 완벽한 생존자가 될 수 있습니다." },
+            { maxScore: 24, title: "생존의 달인 (베어그릴스 강림)", desc: "자연과 하나가 되어 무인도를 리조트처럼 즐기고 있습니다. 뛰어난 위기 대처 능력과 풍부한 지식으로 어떤 상황에서도 살아남을 수 있어요. 오히려 무인도에서 새로운 삶을 개척할지도 모릅니다!" }
         ];
 
         let currentQ = 0;
         let totalScore = 0;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const qText = document.querySelector('.question-text');
-            const optsContainer = document.querySelector('.options');
-            const ctaBtn = document.querySelector('.cta-button');
+        document.addEventListener("DOMContentLoaded", () => {
+            const qText = document.querySelector(".question-text");
+            const optsContainer = document.querySelector(".options");
+            const ctaBtn = document.querySelector(".cta-button");
 
             function loadQ() {
                 if(currentQ < quizData.length) {
                     qText.textContent = quizData[currentQ].question;
+                    optsContainer.innerHTML = ''; // 기존 옵션 초기화
+                    
+                    // 옵션 데이터는 퀴즈데이터에 없으므로, 기본 4개 옵션 버튼을 동적으로 생성하도록 변경
+                    const optionTexts = [
+                        "매우 그렇다", "그렇다", "그렇지 않다", "전혀 그렇지 않다"
+                    ];
+                    const optionScores = [
+                        3, 2, 1, 0
+                    ];
+
+                    if (currentQ === 0) { // 첫 질문의 옵션은 HTML에 이미 있으므로 넘김
+                         // do nothing, use existing HTML options
+                    } else if (currentQ === 1) {
+                        optsContainer.innerHTML = `
+                            <button class="option-button" data-score="3">나무 위나 동굴 등 안전한 곳을 찾는다</button>
+                            <button class="option-button" data-score="2">간단히 나뭇가지로 비를 피할 공간을 만든다</button>
+                            <button class="option-button" data-score="1">모닥불을 피우고 그 옆에서 잔다</button>
+                            <button class="option-button" data-score="0">피곤해서 아무 데나 눕는다</button>
+                        `;
+                    } else if (currentQ === 2) {
+                        optsContainer.innerHTML = `
+                            <button class="option-button" data-score="2">조금 맛보고 독성 여부를 확인한다</button>
+                            <button class="option-button" data-score="3">새나 다른 동물이 먹는지 지켜본다</button>
+                            <button class="option-button" data-score="0">배고파 죽겠는데 그냥 먹는다</button>
+                            <button class="option-button" data-score="1">먹지 않고 다른 식량을 찾아본다</button>
+                        `;
+                    } else if (currentQ === 3) {
+                        optsContainer.innerHTML = `
+                            <button class="option-button" data-score="3">가장 눈에 띄게 큰 불을 피워 신호를 보낸다</button>
+                            <button class="option-button" data-score="2">소리를 지르거나 옷을 흔들어 필사적으로 알린다</button>
+                            <button class="option-button" data-score="0">지나갈 배는 지나갈 뿐... 체념한다</button>
+                            <button class="option-button" data-score="1">일단 숨어서 상황을 지켜본다</button>
+                        `;
+                    } else if (currentQ === 4) {
+                        optsContainer.innerHTML = `
+                            <button class="option-button" data-score="3">안전 여부 확인 후 조심스럽게 탐험한다</button>
+                            <button class="option-button" data-score="1">위험할 것 같아 다른 곳을 찾아본다</button>
+                            <button class="option-button" data-score="0">밤새 머물 수 있는 좋은 장소라 생각하고 바로 들어간다</button>
+                            <button class="option-button" data-score="2">입구에 표시를 해두고 나중에 다시 온다</button>
+                        `;
+                    } else if (currentQ === 5) {
+                        optsContainer.innerHTML = `
+                            <button class="option-button" data-score="3">나뭇잎 등을 모아 빗물을 받는다</button>
+                            <button class="option-button" data-score="1">몸을 웅크리고 비가 그치기를 기다린다</button>
+                            <button class="option-button" data-score="0">비 맞으며 돌아다녀도 괜찮다</button>
+                            <button class="option-button" data-score="2">피할 곳을 찾아 뛰어간다</button>
+                        `;
+                    } else if (currentQ === 6) {
+                        optsContainer.innerHTML = `
+                            <button class="option-button" data-score="2">먹이로 삼을 수 있을까?</button>
+                            <button class="option-button" data-score="3">위험하니 피해야겠다.</button>
+                            <button class="option-button" data-score="1">어디로 갔을까? 따라가 본다.</button>
+                            <button class="option-button" data-score="0">별로 신경 쓰지 않는다.</button>
+                        `;
+                    } else if (currentQ === 7) {
+                        optsContainer.innerHTML = `
+                            <button class="option-button" data-score="3">생존에 필요한 도구와 지식</button>
+                            <button class="option-button" data-score="2">긍정적인 마음과 희망</button>
+                            <button class="option-button" data-score="1">안전한 잠자리와 휴식</button>
+                            <button class="option-button" data-score="0">구조될 것이라는 믿음</button>
+                        `;
+                    }
+                    
+                } else {
+                     // 모든 질문 완료 후 버튼 활성화 또는 이동 로직 (필요시 추가)
                 }
             }
 
-            optsContainer.addEventListener('click', (e) => {
-                if(e.target.classList.contains('option-button')) {
+            optsContainer.addEventListener("click", (e) => {
+                if(e.target.classList.contains("option-button")) {
                     totalScore += parseInt(e.target.dataset.score, 10);
                     currentQ++;
-                    if(currentQ < quizData.length) loadQ();
+                    if(currentQ < quizData.length) {
+                        loadQ();
+                    } else {
+                        showResult();
+                    }
                 }
             });
 
-            ctaBtn.addEventListener('click', () => {
-                let title = "", desc = "";
-                if(totalScore >= 10) { title = "베어그릴스 강림"; desc = "자연과 하나가 되어 무인도를 리조트처럼 즐기고 있습니다."; }
-                else if(totalScore >= 6) { title = "의지의 한국인"; desc = "끈질긴 생명력으로 끝까지 버텨 결국 구조되는 끈기의 아이콘."; }
-                else if(totalScore >= 3) { title = "로빈슨 크루소 워너비"; desc = "나름대로 노력은 하지만 서툰 솜씨로 고생을 사서 하는 스타일입니다."; }
-                else { title = "하루살이 생존자"; desc = "멘탈 붕괴! 야생에서의 생존은 너무나 가혹합니다."; }
-
-                document.querySelector('.result-type').textContent = `결과: ${title}`;
-                document.querySelector('.result-description').textContent = desc;
-
-                document.getElementById('quiz-section').style.display = 'none';
-                const loadingOverlay = document.querySelector('.loading-overlay');
-                const resultSection = document.getElementById('result-section');
-                
-                loadingOverlay.classList.add('show');
-                setTimeout(() => {
-                    loadingOverlay.classList.remove('show');
-                    resultSection.style.display = 'block';
-                }, 2000);
+            ctaBtn.addEventListener("click", () => {
+                if(currentQ < quizData.length) {
+                    alert("모든 질문에 답변해주세요!");
+                } else {
+                    showResult();
+                }
             });
+
+            function showResult() {
+                let title = "", desc = "";
+                if(totalScore >= 21) { title = "생존의 달인 (베어그릴스 강림)"; desc = "자연과 하나가 되어 무인도를 리조트처럼 즐기고 있습니다. 뛰어난 위기 대처 능력과 풍부한 지식으로 어떤 상황에서도 살아남을 수 있어요. 오히려 무인도에서 새로운 삶을 개척할지도 모릅니다!"; }
+                else if(totalScore >= 15) { title = "의지의 한국인"; desc = "끈질긴 생명력과 강한 의지로 어떤 난관도 헤쳐나가는 끈기의 아이콘입니다. 포기하지 않고 끝까지 버텨 결국 구조되는 모습을 보여줄 거예요. 약간의 지식만 더해진다면 완벽한 생존자가 될 수 있습니다."; }
+                else if(totalScore >= 8) { title = "로빈슨 크루소 워너비"; desc = "나름대로 노력은 하지만 서툰 솜씨로 고생을 사서 하는 스타일입니다. 기본적인 생존 기술을 익히고 계획을 세우는 연습이 필요해요. 혼자보다는 동료와 함께하는 것이 좋습니다."; }
+                else { title = "하루살이 생존자"; desc = "야생에서의 생존은 당신에게 너무나 가혹합니다. 멘탈 붕괴와 함께 의욕을 상실하기 쉬워요. 빠르게 구조 신호를 보내는 것이 최우선입니다."; }
+
+                document.querySelector(".result-type").textContent = `결과: ${title}`;
+                document.querySelector(".result-description").textContent = desc;
+
+                document.getElementById("quiz-section").style.display = "none";
+                const loadingOverlay = document.querySelector(".loading-overlay");
+                const resultSection = document.getElementById("result-section");
+                
+                loadingOverlay.classList.add("show");
+                setTimeout(() => {
+                    loadingOverlay.classList.remove("show");
+                    resultSection.style.display = "block";
+                }, 2000);
+            }
+            loadQ();
         });
     </script>
 </body>

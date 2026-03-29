@@ -72,61 +72,93 @@
     <script src="../js/script.js"></script>
     <script>
         const quizData = [
-            { question: "1. 숲 속에서 길을 잃었다면?", options: [{text: "직감적으로 길을 찾는다", val: "A"}, {text: "가진 도구를 활용해 나침반을 만든다", val: "B"}] },
-            { question: "2. 여가 시간이 생겼다. 무엇을 할까?", options: [{text: "사람들과 모여 파티를 연다", val: "C"}, {text: "조용히 책을 읽으며 사색에 잠긴다", val: "D"}] },
-            { question: "3. 누군가와 논쟁이 붙었다. 나는?", options: [{text: "논리적으로 조목조목 따진다", val: "B"}, {text: "상황을 원만하게 중재하려고 한다", val: "C"}] }
+            { question: "1. 새로운 모임에 나갔을 때 나의 행동은?", options: [{text: "먼저 다가가 말을 건넨다", val: "E"}, {text: "누군가 말을 걸어줄 때까지 기다린다", val: "I"}] },
+            { question: "2. 숲 속에서 길을 잃었다면? 나의 선택은?", options: [{text: "직감적으로 길을 찾는다 (감각)", val: "S"}, {text: "가진 도구를 활용해 나침반을 만든다 (사고)", val: "T"}] },
+            { question: "3. 여가 시간이 생겼다. 무엇을 할까?", options: [{text: "사람들과 모여 파티를 연다 (외향)", val: "E"}, {text: "조용히 책을 읽거나 새로운 것을 배운다 (내향)", val: "I"}] },
+            { question: "4. 누군가와 논쟁이 붙었다. 나는?", options: [{text: "논리적으로 조목조목 따진다 (사고)", val: "T"}, {text: "상황을 원만하게 중재하려고 한다 (감정)", val: "F"}] },
+            { question: "5. 중요한 결정을 앞두고 있을 때, 주로 무엇을 고려하는가?", options: [{text: "객관적인 사실과 원칙 (사고)", val: "T"}, {text: "나와 타인의 감정과 관계 (감정)", val: "F"}] },
+            { question: "6. 새로운 것을 배울 때 어떤 방식이 더 효과적인가?", options: [{text: "실제로 해보면서 익힌다 (감각)", val: "S"}, {text: "이론과 원리를 먼저 이해한다 (직관)", val: "N"}] },
+            { question: "7. 미래를 계획할 때, 주로 어떤 것을 생각하는가?", options: [{text: "구체적인 목표와 단계별 계획 (판단)", val: "J"}, {text: "다양한 가능성과 유연한 대처 (인식)", val: "P"}] },
+            { question: "8. 여행 계획을 짤 때 나의 스타일은?", options: [{text: "세부 일정을 미리 다 세운다 (판단)", val: "J"}, {text: "큰 틀만 정하고 즉흥적으로 움직인다 (인식)", val: "P"}] }
+        ];
+
+        const results = [
+            { type: "ETJ", title: "카리스마 넘치는 왕", desc: "타고난 리더십과 추진력으로 사람들을 이끌었던 당신은 전생에 강력한 왕이나 제왕이었을 것입니다. 목표를 향해 거침없이 나아가며 성공을 쟁취하는 데 능했네요." },
+            { type: "IST", title: "정교한 발명가", desc: "분석적이고 논리적인 사고로 복잡한 문제를 해결했던 당신은 전생에 위대한 발명가나 과학자였을 것입니다. 섬세한 손재주와 뛰어난 지혜로 시대를 앞서갔네요." },
+            { type: "INF", title: "따뜻한 치유사", desc: "타인의 감정에 깊이 공감하고 아픔을 보듬었던 당신은 전생에 사람들의 마음을 어루만지는 치유사나 현명한 조언자였을 것입니다. 평화를 사랑하고 타인을 돕는 데 헌신했네요." },
+            { type: "ESP", title: "자유로운 예술가", desc: "틀에 얽매이지 않고 자유로운 영혼을 가졌던 당신은 전생에 열정적인 예술가나 방랑자였을 것입니다. 삶의 아름다움을 추구하며 순간을 만끽했네요." },
+            { type: "NTJ", title: "냉철한 전략가", desc: "탁월한 통찰력과 전략적 사고로 난관을 헤쳐나갔던 당신은 전생에 유능한 군사 전략가나 재상이었을 것입니다. 큰 그림을 보고 미래를 예측하는 데 뛰어났네요." },
+            { type: "ISF", title: "성실한 장인", desc: "꾸준함과 섬세함으로 자신만의 분야를 개척했던 당신은 전생에 숙련된 장인이나 학자였을 것입니다. 묵묵히 자신의 길을 걸으며 완벽을 추구했네요." },
+            { type: "ENP", title: "재기발랄한 혁명가", desc: "넘치는 아이디어와 에너지로 세상을 변화시켰던 당신은 전생에 재기발랄한 혁명가나 사상가였을 것입니다. 고정관념을 깨고 새로운 시대의 문을 열었네요." },
+            { type: "EST", title: "용맹한 기사", desc: "강인한 신념과 뛰어난 실력으로 자신의 공동체를 지켰던 당신은 전생에 용맹한 기사나 전사였을 것입니다. 정의를 위해 싸우고 명예를 중시했네요." }
         ];
 
         let currentQ = 0;
-        let scores = { A:0, B:0, C:0, D:0 };
+        let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const qText = document.querySelector('.question-text');
-            const optsContainer = document.querySelector('.options');
-            const ctaBtn = document.querySelector('.cta-button');
+        document.addEventListener("DOMContentLoaded", () => {
+            const qText = document.querySelector(".question-text");
+            const optsContainer = document.querySelector(".options");
+            const ctaBtn = document.querySelector(".cta-button");
 
             function loadQ() {
                 if(currentQ < quizData.length) {
                     qText.textContent = quizData[currentQ].question;
-                    optsContainer.innerHTML = '';
+                    optsContainer.innerHTML = "";
                     quizData[currentQ].options.forEach(opt => {
                         optsContainer.innerHTML += `<button class="option-button" data-val="${opt.val}">${opt.text}</button>`;
                     });
+                } else {
+                     // 모든 질문 완료 후 버튼 활성화 또는 이동 로직 (필요시 추가)
                 }
             }
             
             loadQ();
 
-            optsContainer.addEventListener('click', (e) => {
-                if(e.target.classList.contains('option-button')) {
+            optsContainer.addEventListener("click", (e) => {
+                if(e.target.classList.contains("option-button")) {
                     scores[e.target.dataset.val]++;
                     currentQ++;
-                    if(currentQ < quizData.length) loadQ();
+                    if(currentQ < quizData.length) {
+                        loadQ();
+                    } else {
+                         // 모든 질문 완료 후 로딩 및 결과 표시
+                         showResult();
+                    }
                 }
             });
 
-            ctaBtn.addEventListener('click', () => {
-                // 단순 결과 도출 로직
-                let highest = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
-                let title = "", desc = "";
-                if(highest === 'A') { title = "용맹한 탐험가"; desc = "미지의 세계를 개척하는 것을 두려워하지 않았던 당신!"; }
-                else if(highest === 'B') { title = "지혜로운 연금술사"; desc = "사물의 이치를 탐구하고 새로운 것을 발명하던 학자였습니다."; }
-                else if(highest === 'C') { title = "카리스마 넘치는 족장"; desc = "사람들을 이끌고 공동체를 화합시키던 리더였습니다."; }
-                else { title = "평화로운 수도사"; desc = "조용히 진리를 탐구하며 내면의 평화를 중시하던 삶을 살았습니다."; }
-
-                document.querySelector('.result-type').textContent = `결과: ${title}`;
-                document.querySelector('.result-description').textContent = desc;
-
-                document.getElementById('quiz-section').style.display = 'none';
-                const loadingOverlay = document.querySelector('.loading-overlay');
-                const resultSection = document.getElementById('result-section');
-                
-                loadingOverlay.classList.add('show');
-                setTimeout(() => {
-                    loadingOverlay.classList.remove('show');
-                    resultSection.style.display = 'block';
-                }, 2000);
+            ctaBtn.addEventListener("click", () => {
+                 if(currentQ < quizData.length) { // 아직 질문이 남아있는데 버튼을 누른 경우
+                     // 현재 질문에 대한 답변을 강제로 선택하는 로직 또는 경고창 띄우기 (선택 사항)
+                     alert("모든 질문에 답변해주세요!");
+                 } else { // 모든 질문에 답변 후 버튼을 누른 경우
+                     showResult();
+                 }
             });
+
+            function showResult() {
+                let mbtiType = "";
+                mbtiType += scores.E > scores.I ? "E" : "I";
+                mbtiType += scores.S > scores.N ? "S" : "N";
+                mbtiType += scores.T > scores.F ? "T" : "F";
+                mbtiType += scores.J > scores.P ? "J" : "P";
+
+                let finalResult = results.find(r => r.type.startsWith(mbtiType.substring(0,3))) || results[0]; // 4글자 매칭이 어려울 경우 3글자로 시도, 없으면 기본값
+
+                document.querySelector(".result-type").textContent = `결과: ${finalResult.title}`;
+                document.querySelector(".result-description").textContent = finalResult.desc;
+
+                document.getElementById("quiz-section").style.display = "none";
+                const loadingOverlay = document.querySelector(".loading-overlay");
+                const resultSection = document.getElementById("result-section");
+                
+                loadingOverlay.classList.add("show");
+                setTimeout(() => {
+                    loadingOverlay.classList.remove("show");
+                    resultSection.style.display = "block";
+                }, 2000);
+            }
         });
     </script>
 </body>

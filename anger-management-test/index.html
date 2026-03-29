@@ -6,7 +6,6 @@
     <title>분노조절장애 테스트 | Life Test</title>
     <meta name="description" content="당신의 분노 조절 능력은? 지금 바로 심리 테스트로 알아보세요!">
     <link rel="stylesheet" href="../css/style.css">
-    <!-- JSON-LD 구조화 데이터 삽입 예정 -->
 </head>
 <body>
     <div class="container">
@@ -16,67 +15,36 @@
             <div class="hamburger-menu">☰</div>
             <nav class="full-screen-nav">
                 <div class="close-button">X</div>
-                <ul id="content-list">
-                    <!-- 콘텐츠 목록이 여기에 동적으로 로드됩니다 -->
-                </ul>
+                <ul id="content-list"></ul>
             </nav>
         </header>
 
-        <!--
-        <div class="ad-banner top-width-ad">
-            <div class="ad-placeholder">광고: 상단 가로형 배너</div>
-        </div>
-        -->
-
         <main class="main-content">
             <div class="content-wrapper">
-                <!--
-                <aside class="ad-skyscraper left-height-ad">
-                    <div class="ad-placeholder-vertical">광고: 좌측 세로형</div>
-                </aside>
-                -->
-
                 <article class="content-area">
                     <div id="quiz-section">
                         <h1 class="content-title">분노조절장애 테스트</h1>
                         <p class="content-description">사소한 일에도 욱하는 당신? 내 안의 화를 다스리는 법을 테스트를 통해 찾아보세요.</p>
 
-                        <!--
-                        <div class="ad-banner body-ad-01">
-                            <div class="ad-placeholder">광고: 본문 상단</div>
-                        </div>
-                        -->
-
                         <div class="question-container">
-                            <!-- 질문이 여기에 동적으로 로드됩니다 -->
                             <div class="question current-question">
-                                <p class="question-text">1. 나는 쉽게 화를 내는 편이다.</p>
+                                <p class="question-text">1. 나는 화가 나면 얼굴이 금방 붉어진다.</p>
                                 <div class="options">
-                                    <button class="option-button" data-score="3">매우 그렇다</button>
-                                    <button class="option-button" data-score="2">그렇다</button>
-                                    <button class="option-button" data-score="1">그렇지 않다</button>
-                                    <button class="option-button" data-score="0">전혀 그렇지 않다</button>
+                                    <!-- 옵션 버튼들이 여기에 동적으로 로드됩니다 -->
                                 </div>
                             </div>
                         </div>
-
-                        <!--
-                        <div class="ad-banner body-ad-02">
-                            <div class="ad-placeholder">광고: 본문 하단</div>
-                        </div>
-                        -->
 
                         <div class="input-form">
                             <button class="cta-button">결과 보기</button>
                         </div>
                     </div>
 
-                    <!-- 결과 화면 (초기에는 숨김) -->
+                    <!-- 결과 화면 -->
                     <div id="result-section" style="display: none;">
                         <h2>당신의 분노 지수는?!</h2>
                         <p class="result-description">이곳에 테스트 결과에 대한 상세 설명이 들어갑니다. 당신은 평온함을 유지하는 타입입니다.</p>
                         <p class="result-type">분노 지수: 낮음 (평온한 사자)</p>
-                        <!-- 탐험 유도 배너 -->
                         <div class="explore-banner">
                             <h3>다른 재미있는 테스트도 해보세요!</h3>
                             <div class="explore-item">
@@ -88,20 +56,8 @@
                         </div>
                     </div>
                 </article>
-
-                <!--
-                <aside class="ad-skyscraper right-height-ad">
-                    <div class="ad-placeholder-vertical">광고: 우측 세로형</div>
-                </aside>
-                -->
             </div>
         </main>
-
-        <!--
-        <div class="ad-banner bottom-width-ad">
-            <div class="ad-placeholder">광고: 하단 가로형 배너</div>
-        </div>
-        -->
 
         <!-- 푸터 -->
         <footer class="footer">
@@ -112,12 +68,108 @@
     <!-- 로딩 오버레이 -->
     <div class="loading-overlay">
         <div class="loading-dots">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
     </div>
 
     <script src="../js/script.js"></script>
+    <script>
+        const quizData = [
+            { question: "1. 나는 화가 나면 얼굴이 금방 붉어진다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "2. 사소한 일에도 쉽게 짜증이 나고 폭발할 것 같다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "3. 내 뜻대로 되지 않으면 물건을 던지거나 때리고 싶다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "4. 화가 나면 주변 사람들에게 심한 말을 하거나 비난한다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "5. 화가 난 후에는 항상 후회하지만, 또다시 반복된다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "6. 다른 사람들의 작은 실수에도 크게 분노한다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "7. 화가 나면 잠을 이루지 못하거나 식욕이 떨어진다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] },
+            { question: "8. 분노를 참기 위해 다른 행동(흡연, 음주 등)에 의존한다.", options: [{text: "매우 그렇다", score: 3}, {text: "그렇다", score: 2}, {text: "가끔 그렇다", score: 1}, {text: "전혀 그렇지 않다", score: 0}] }
+        ];
+
+        const results = [
+            { maxScore: 8, title: "평온한 사자 (분노 지수: 낮음)", desc: "당신은 화를 잘 조절하며 평온함을 유지하는 타입입니다. 스트레스 상황에서도 침착하게 대처하고, 긍정적인 마음으로 문제를 해결하려 노력합니다. 주변 사람들에게도 안정감을 주는 존재네요!" },
+            { maxScore: 14, title: "참을 인 세 번 (분노 지수: 보통)", desc: "당신은 평소에는 화를 잘 참지만, 한 번 폭발하면 무서운 타입입니다. 스트레스가 쌓이지 않도록 주기적으로 해소하는 방법을 찾는 것이 중요해요. 너무 억누르기보다는 건강하게 표출하는 연습이 필요합니다." },
+            { maxScore: 20, title: "활화산 대기 중 (분노 지수: 높음)", desc: "당신은 사소한 일에도 쉽게 화가 나고, 감정 기복이 큰 편입니다. 내면에 억눌린 분노가 많아 작은 자극에도 폭발하기 쉬워요. 분노 조절에 대한 적극적인 노력이 필요하며, 전문가의 도움을 받는 것도 좋은 방법입니다." },
+            { maxScore: 24, title: "분노의 화신 (분노 지수: 매우 높음)", desc: "경고! 당신은 분노가 삶의 대부분을 지배하고 있는 상태입니다. 통제하기 어려운 분노로 인해 일상생활과 대인관계에 어려움을 겪을 수 있습니다. 지금 당장 전문가의 도움을 받아 분노 조절 훈련을 시작해야 합니다. 당신의 마음 건강이 최우선입니다." }
+        ];
+
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const questionText = document.querySelector(".question-text");
+            const optionsContainer = document.querySelector(".options");
+            const ctaButton = document.querySelector(".cta-button");
+
+            function loadQuestion() {
+                if (currentQuestionIndex < quizData.length) {
+                    questionText.textContent = quizData[currentQuestionIndex].question;
+                    optionsContainer.innerHTML = ""; // 기존 옵션 초기화
+                    quizData[currentQuestionIndex].options.forEach(opt => {
+                        optionsContainer.innerHTML += `<button class="option-button" data-score="${opt.score}">${opt.text}</button>`;
+                    });
+                } else {
+                    // 모든 질문이 완료되면 결과 보기 버튼 활성화 (필요시)
+                }
+            }
+
+            optionsContainer.addEventListener("click", (e) => {
+                if(e.target.classList.contains("option-button")) {
+                    // 이전에 선택된 버튼의 'selected' 클래스 제거
+                    const prevSelected = optionsContainer.querySelector(".option-button.selected");
+                    if (prevSelected) {
+                        prevSelected.classList.remove("selected");
+                    }
+                    // 현재 클릭된 버튼에 'selected' 클래스 추가
+                    e.target.classList.add("selected");
+
+                    totalScore += parseInt(e.target.dataset.score, 10);
+                    currentQuestionIndex++;
+                    
+                    setTimeout(() => { // 다음 질문으로 넘어가는 딜레이
+                        if (currentQuestionIndex < quizData.length) {
+                            loadQuestion();
+                        } else {
+                            // 모든 질문 완료 후, 결과 보기 버튼 활성화 또는 바로 결과 표시
+                            showResult();
+                        }
+                    }, 300); // 0.3초 딜레이
+                }
+            });
+
+            ctaButton.addEventListener("click", () => {
+                // 모든 질문에 답변했는지 확인
+                if (currentQuestionIndex < quizData.length) {
+                    alert("모든 질문에 답변해주세요!");
+                } else {
+                    showResult();
+                }
+            });
+
+            function showResult() {
+                let finalResult = results[results.length - 1]; // 기본값은 마지막 결과
+                for (let r of results) {
+                    if (totalScore <= r.maxScore) {
+                        finalResult = r;
+                        break;
+                    }
+                }
+                
+                document.querySelector(".result-description").textContent = finalResult.desc;
+                document.querySelector(".result-type").textContent = `결과: ${finalResult.title}`;
+                
+                document.getElementById("quiz-section").style.display = "none";
+                const loadingOverlay = document.querySelector(".loading-overlay");
+                const resultSection = document.getElementById("result-section");
+                
+                loadingOverlay.classList.add("show");
+                setTimeout(() => {
+                    loadingOverlay.classList.remove("show");
+                    resultSection.style.display = "block";
+                }, 2000);
+            }
+
+            loadQuestion(); // 페이지 로드 시 첫 질문 로드
+        });
+    </script>
 </body>
 </html>

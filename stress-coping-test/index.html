@@ -30,9 +30,9 @@
                             <div class="question current-question">
                                 <p class="question-text">1. 중요한 시험을 하루 앞두고 도무지 집중이 안 된다. 나는?</p>
                                 <div class="options">
-                                    <button class="option-button" data-val="1">일단 잠부터 자고 내일 아침에 한다</button>
-                                    <button class="option-button" data-val="2">친구에게 전화해 하소연한다</button>
-                                    <button class="option-button" data-val="3">억지로라도 책상에 앉아 버틴다</button>
+                                    <button class="option-button" data-score="1">일단 잠부터 자고 내일 아침에 한다</button>
+                                    <button class="option-button" data-score="2">친구에게 전화해 하소연한다</button>
+                                    <button class="option-button" data-score="3">억지로라도 책상에 앉아 버틴다</button>
                                 </div>
                             </div>
                         </div>
@@ -78,59 +78,86 @@
     <script src="../js/script.js"></script>
     <script>
         const quizData = [
-            { question: "1. 중요한 시험을 하루 앞두고 도무지 집중이 안 된다. 나는?" },
-            { question: "2. 길을 가다 모르는 사람이 이유 없이 시비를 건다. 나는?" },
-            { question: "3. 공들여 진행하던 프로젝트가 마지막에 엎어졌다. 나의 반응은?" }
+            { question: "1. 중요한 시험을 하루 앞두고 도무지 집중이 안 된다. 나는?", options: [{text: "일단 잠부터 자고 내일 아침에 한다", score: 1}, {text: "친구에게 전화해 하소연한다", score: 2}, {text: "억지로라도 책상에 앉아 버틴다", score: 3}] },
+            { question: "2. 길을 가다 모르는 사람이 이유 없이 시비를 건다. 나는?", options: [{text: "무시하고 갈 길 간다", score: 1}, {text: "상대방의 의도를 파악하려고 노력한다", score: 2}, {text: "똑같이 맞서 싸운다", score: 3}] },
+            { question: "3. 공들여 진행하던 프로젝트가 마지막에 엎어졌다. 나의 반응은?", options: [{text: "화가 나지만 일단 참는다", score: 2}, {text: "누군가의 탓을 한다", score: 1}, {text: "다음 프로젝트를 위해 원인 분석을 한다", score: 3}] },
+            { question: "4. 스트레스 해소를 위해 가장 먼저 찾는 것은?", options: [{text: "맛있는 음식 또는 술", score: 1}, {text: "운동이나 활동적인 취미", score: 3}, {text: "친구들과의 수다", score: 2}] },
+            { question: "5. 어려운 문제가 발생했을 때, 주로 어떻게 접근하는가?", options: [{text: "혼자 고민하며 해결책을 찾는다", score: 1}, {text: "주변 사람들에게 도움을 요청한다", score: 2}, {text: "문제의 핵심을 파악하고 계획을 세운다", score: 3}] },
+            { question: "6. 예상치 못한 상황에 직면했을 때, 나의 반응은?", options: [{text: "당황하며 어쩔 줄 몰라 한다", score: 1}, {text: "감정을 조절하고 침착하게 대응한다", score: 3}, {text: "상황을 회피하려고 한다", score: 2}] },
+            { question: "7. 과거의 실수나 후회되는 일에 대해 어떻게 생각하는가?", options: [{text: "잊으려 노력한다", score: 1}, {text: "교훈 삼아 다음 기회를 노린다", score: 3}, {text: "계속 곱씹으며 자책한다", score: 2}] },
+            { question: "8. 주변 사람들과 갈등이 생겼을 때, 나는?", options: [{text: "먼저 사과하고 화해를 시도한다", score: 2}, {text: "내 주장을 끝까지 관철시킨다", score: 1}, {text: "조용히 거리를 둔다", score: 3}] }
+        ];
+
+        const results = [
+            { maxScore: 8, title: "동굴 회피형", desc: "스트레스 상황에서 잠시 도피하며 혼자만의 시간을 가지는 것을 선호하는 당신. 갈등을 피하고 싶어 동굴로 숨어드는 경향이 있지만, 이는 잠시일 뿐 회피한다고 문제가 해결되지는 않습니다. 때로는 용기를 내어 세상 밖으로 나와보세요!" },
+            { maxScore: 14, title: "감정 발산형", desc: "스트레스를 받으면 감정을 솔직하게 드러내고 주변 사람들과 공유하며 해소하는 당신. 혼자 삭히기보다는 표현하는 것이 중요하다고 생각하지만, 때로는 감정적인 모습으로 비춰질 수 있습니다. 자신의 감정을 건강하게 조절하는 방법을 찾아보세요." },
+            { maxScore: 20, title: "정면 돌파형", desc: "스트레스를 피하지 않고 정면으로 맞서 싸우며 해결책을 찾는 당신. 문제의 원인을 분석하고 적극적으로 해결하려 노력하는 강한 의지의 소유자입니다. 하지만 때로는 너무 강압적으로 느껴질 수 있으니, 여유를 가지고 주변을 둘러보는 것도 필요합니다." },
+            { maxScore: 24, title: "현명한 해결사 (스트레스 마스터)", desc: "어떤 스트레스 상황에서도 침착함을 잃지 않고 현명하게 대처하는 당신! 뛰어난 문제 해결 능력과 긍정적인 마인드로 스트레스를 오히려 성장의 발판으로 삼는 진정한 스트레스 마스터입니다. 당신의 지혜로움을 모두에게 나누어주세요!" }
         ];
 
         let currentQ = 0;
-        let score = 0;
+        let totalScore = 0;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const qText = document.querySelector('.question-text');
-            const optsContainer = document.querySelector('.options');
-            const ctaBtn = document.querySelector('.cta-button');
+        document.addEventListener("DOMContentLoaded", () => {
+            const qText = document.querySelector(".question-text");
+            const optsContainer = document.querySelector(".options");
+            const ctaBtn = document.querySelector(".cta-button");
 
             function loadQ() {
                 if(currentQ < quizData.length) {
                     qText.textContent = quizData[currentQ].question;
+                    optsContainer.innerHTML = ""; // 기존 옵션 초기화
+                    quizData[currentQ].options.forEach(opt => {
+                        optsContainer.innerHTML += `<button class="option-button" data-score="${opt.score}">${opt.text}</button>`;
+                    });
+                } else {
+                     // 모든 질문 완료 후 버튼 활성화 또는 이동 로직 (필요시 추가)
                 }
             }
 
-            optsContainer.addEventListener('click', (e) => {
-                if(e.target.classList.contains('option-button')) {
-                    score += parseInt(e.target.dataset.val || '1');
+            optsContainer.addEventListener("click", (e) => {
+                if(e.target.classList.contains("option-button")) {
+                    totalScore += parseInt(e.target.dataset.score, 10);
                     currentQ++;
-                    if(currentQ < quizData.length) loadQ();
+                    if(currentQ < quizData.length) {
+                        loadQ();
+                    } else {
+                         showResult();
+                    }
                 }
             });
 
-            ctaBtn.addEventListener('click', () => {
-                let title = "", desc = "";
-                if(score > 7) { 
-                    title = "정면 돌파형"; 
-                    desc = "스트레스를 피하지 않고 맞서 싸우며 해결책을 찾는 스타일입니다."; 
-                } else if(score > 4) { 
-                    title = "감정 발산형"; 
-                    desc = "주변 사람들과 대화를 나누거나 감정을 솔직하게 표현하며 풀어나가는 스타일입니다."; 
-                } else {
-                    title = "동굴 회피형";
-                    desc = "잠시 혼자만의 시간을 가지며 에너지를 재충전해야 하는 스타일입니다.";
-                }
-
-                document.querySelector('.result-type').textContent = `결과: ${title}`;
-                document.querySelector('.result-description').textContent = desc;
-
-                document.getElementById('quiz-section').style.display = 'none';
-                const loadingOverlay = document.querySelector('.loading-overlay');
-                const resultSection = document.getElementById('result-section');
-                
-                loadingOverlay.classList.add('show');
-                setTimeout(() => {
-                    loadingOverlay.classList.remove('show');
-                    resultSection.style.display = 'block';
-                }, 2000);
+            ctaBtn.addEventListener("click", () => {
+                 if(currentQ < quizData.length) {
+                     alert("모든 질문에 답변해주세요!");
+                 } else {
+                     showResult();
+                 }
             });
+
+            function showResult() {
+                let finalResult = results[results.length - 1];
+                 for (let r of results) {
+                     if (totalScore <= r.maxScore) {
+                         finalResult = r;
+                         break;
+                     }
+                 }
+                 
+                 document.querySelector(".result-description").textContent = finalResult.desc;
+                 document.querySelector(".result-type").textContent = `결과: ${finalResult.title}`;
+                 
+                 document.getElementById("quiz-section").style.display = "none";
+                 const loadingOverlay = document.querySelector(".loading-overlay");
+                 const resultSection = document.getElementById("result-section");
+                 
+                 loadingOverlay.classList.add("show");
+                 setTimeout(() => {
+                    loadingOverlay.classList.remove("show");
+                    resultSection.style.display = "block";
+                 }, 2000);
+            }
+            loadQ(); // 페이지 로드 시 첫 질문 로드
         });
     </script>
 </body>
